@@ -15,7 +15,35 @@ import pandas as pd
 DEFAULT_EMBEDDING_DIR = Path("Final/data_splits/embeddings")
 DEFAULT_OUTPUT_DIR = Path("Final/cluster_results")
 DEFAULT_SEED = 393
-STOPWORDS = {
+STOPWORDS = {  # only used in report for trimming top term freq
+    "we",
+    "will",
+    "until",
+    "they",
+    "than",
+    "such",
+    "some",
+    "should",
+    "our",
+    "or",
+    "on",
+    "of",
+    "may",
+    "its",
+    "it",
+    "is",
+    "in",
+    "if",
+    "each",
+    "does",
+    "do",
+    "by",
+    "been",
+    "be",
+    "at",
+    "as",
+    "an",
+    "a",
     "about",
     "after",
     "also",
@@ -94,6 +122,48 @@ def parse_args() -> argparse.Namespace:
         help="UMAP dimensions before HDBSCAN. Use 0 to skip UMAP.",
     )
     parser.add_argument(
+        "--algorithm",
+        choices=["hdbscan", "kmeans"],
+        default="hdbscan",
+        help="Clustering algorithm. KMeans is useful for forcing candidate valuation buckets.",
+    )
+    parser.add_argument(
+        "--feature-mode",
+        choices=["embeddings", "behavior", "combined"],
+        default="embeddings",
+        help="Features used for clustering after dimensionality reduction.",
+    )
+    parser.add_argument(
+        "--kmeans-clusters",
+        type=int,
+        default=16,
+        help="Number of clusters when --algorithm kmeans is used.",
+    )
+    parser.add_argument(
+        "--embedding-weight",
+        type=float,
+        default=0.35,
+        help="Weight for reduced embedding features when --feature-mode combined is used.",
+    )
+    parser.add_argument(
+        "--behavior-weight",
+        type=float,
+        default=2.0,
+        help="Weight for behavioral features when --feature-mode combined is used.",
+    )
+    parser.add_argument(
+        "--filter-cluster-from",
+        type=Path,
+        default=None,
+        help="Optional clustered_responses.parquet to filter from before reclustering.",
+    )
+    parser.add_argument(
+        "--filter-cluster",
+        type=int,
+        default=None,
+        help="Cluster id to keep from --filter-cluster-from before reclustering.",
+    )
+    parser.add_argument(
         "--min-cluster-size",
         type=int,
         default=50,
@@ -157,6 +227,34 @@ def load_embeddings(args: argparse.Namespace) -> tuple[pd.DataFrame, np.ndarray]
     metadata = pd.concat(metadata_frames, ignore_index=True)
     embeddings = np.vstack(embedding_arrays).astype(np.float32)
 
+    if args.filter_cluster_from is not None:
+        if args.filter_cluster is None:
+            raise SystemExit("--filter-cluster must be set when --filter-cluster-from is used.")
+        prior = pd.read_parquet(args.filter_cluster_from)
+        if "cluster" not in prior.columns:
+            raise SystemExit(f"Missing cluster column in {args.filter_cluster_from}")
+
+        key_columns = ["source_split", "source_row", "response_index"]
+        missing = [column for column in key_columns if column not in prior.columns or column not in metadata.columns]
+        if missing:
+            raise SystemExit(f"Cannot filter by prior cluster; missing key columns: {missing}")
+
+        selected_keys = prior.loc[prior["cluster"] == args.filter_cluster, key_columns].drop_duplicates()
+        if selected_keys.empty:
+            raise SystemExit(f"No rows found for cluster {args.filter_cluster} in {args.filter_cluster_from}")
+
+        metadata_with_index = metadata.reset_index(names="_embedding_index")
+        matched = selected_keys.merge(metadata_with_index, on=key_columns, how="inner")
+        if matched.empty:
+            raise SystemExit(
+                "No rows from the prior cluster matched the loaded metadata. "
+                "Make sure --splits covers the same split names used by the prior run."
+            )
+
+        indices = matched["_embedding_index"].to_numpy()
+        metadata = metadata.iloc[indices].reset_index(drop=True)
+        embeddings = embeddings[indices]
+
     if args.sample_size is not None and args.sample_size < len(metadata):
         rng = np.random.default_rng(args.seed)
         indices = np.sort(rng.choice(len(metadata), size=args.sample_size, replace=False))
@@ -170,13 +268,16 @@ def reduce_embeddings(embeddings: np.ndarray, args: argparse.Namespace) -> tuple
     reduced = embeddings
     manifest: dict[str, Any] = {"input_shape": list(embeddings.shape)}
 
-    if args.pca_dims > 0 and args.pca_dims < reduced.shape[1]:
+    max_pca_dims = min(reduced.shape[0] - 1, reduced.shape[1])
+    actual_pca_dims = min(args.pca_dims, max_pca_dims)
+    if actual_pca_dims > 0 and actual_pca_dims < reduced.shape[1]:
         from sklearn.decomposition import PCA
 
-        pca = PCA(n_components=args.pca_dims, random_state=args.seed)
+        pca = PCA(n_components=actual_pca_dims, random_state=args.seed)
         reduced = pca.fit_transform(reduced).astype(np.float32)
         manifest["pca"] = {
-            "dims": args.pca_dims,
+            "requested_dims": args.pca_dims,
+            "dims": actual_pca_dims,
             "explained_variance_ratio_sum": float(pca.explained_variance_ratio_.sum()),
         }
     else:
@@ -202,7 +303,26 @@ def reduce_embeddings(embeddings: np.ndarray, args: argparse.Namespace) -> tuple
     return reduced, manifest
 
 
-def cluster_embeddings(reduced: np.ndarray, args: argparse.Namespace) -> tuple[np.ndarray, dict[str, Any]]:
+def cluster_embeddings(features: np.ndarray, args: argparse.Namespace) -> tuple[np.ndarray, dict[str, Any]]:
+    if args.algorithm == "kmeans":
+        from sklearn.cluster import KMeans
+
+        clusterer = KMeans(
+            n_clusters=args.kmeans_clusters,
+            random_state=args.seed,
+            n_init="auto",
+        )
+        labels = clusterer.fit_predict(features)
+        manifest = {
+            "algorithm": "kmeans",
+            "kmeans_clusters": args.kmeans_clusters,
+            "cluster_count": int(len(set(labels))),
+            "noise_count": 0,
+            "noise_fraction": 0.0,
+            "inertia": float(clusterer.inertia_),
+        }
+        return labels, manifest
+
     try:
         import hdbscan
     except ImportError as exc:
@@ -212,7 +332,7 @@ def cluster_embeddings(reduced: np.ndarray, args: argparse.Namespace) -> tuple[n
         min_cluster_size=args.min_cluster_size,
         min_samples=args.min_samples,
     )
-    labels = clusterer.fit_predict(reduced)
+    labels = clusterer.fit_predict(features)
 
     cluster_count = len(set(labels) - {-1})
     noise_count = int(np.sum(labels == -1))
@@ -247,6 +367,97 @@ def text_fraction(texts: pd.Series, pattern: str) -> float:
     if len(texts) == 0:
         return 0.0
     return float(texts.str.contains(pattern, case=False, regex=True, na=False).mean())
+
+
+def opening_fraction(texts: pd.Series, pattern: str) -> float:
+    openings = texts.str.slice(0, 180)
+    return text_fraction(openings, pattern)
+
+
+def regex_flag(text: str, pattern: str, opening_only: bool = False) -> float:
+    value = str(text)
+    if opening_only:
+        value = value[:180]
+    return float(re.search(pattern, value, flags=re.IGNORECASE | re.MULTILINE) is not None)
+
+
+def build_behavior_features(metadata: pd.DataFrame) -> tuple[np.ndarray, list[str]]:
+    texts = metadata["assistant_output"].astype(str)
+    feature_names = [
+        "log_words",
+        "log_chars",
+        "list_format",
+        "code_block",
+        "refusal_marker",
+        "politeness_marker",
+        "assist_agreement_opening",
+        "information_agreement_opening",
+        "user_validation_opening",
+        "clarification_or_uncertainty",
+    ]
+    rows = []
+    for text in texts:
+        rows.append(
+            [
+                np.log1p(word_count(text)),
+                np.log1p(len(text)),
+                regex_flag(text, r"(?m)^\s*(?:[-*]|\d+[.)])\s+"),
+                regex_flag(text, r"```"),
+                regex_flag(text, r"\b(?:sorry|cannot|can't|unable|not able|i do not|i don't)\b"),
+                regex_flag(text, r"\b(?:please|thank|thanks|happy to|glad to)\b"),
+                regex_flag(
+                    text,
+                    r"\b(?:sure|certainly|of course|absolutely|happy to|i can help|i'd be happy|i will help)\b",
+                    opening_only=True,
+                ),
+                regex_flag(
+                    text,
+                    r"\b(?:here (?:is|are)|below (?:is|are)|i can provide|let me explain|to answer|based on|according to)\b",
+                    opening_only=True,
+                ),
+                regex_flag(
+                    text,
+                    r"\b(?:i agree|you're right|you are right|exactly|that's true|that is true|makes sense|good point)\b",
+                    opening_only=True,
+                ),
+                regex_flag(
+                    text,
+                    r"\b(?:could you clarify|can you provide|please provide|need more information|it depends|may|might|could|possibly)\b",
+                ),
+            ]
+        )
+
+    return np.asarray(rows, dtype=np.float32), feature_names
+
+
+def build_cluster_features(
+    metadata: pd.DataFrame,
+    reduced_embeddings: np.ndarray,
+    args: argparse.Namespace,
+) -> tuple[np.ndarray, dict[str, Any]]:
+    from sklearn.preprocessing import StandardScaler
+
+    manifest: dict[str, Any] = {"feature_mode": args.feature_mode}
+    if args.feature_mode == "embeddings":
+        return reduced_embeddings, manifest | {"shape": list(reduced_embeddings.shape)}
+
+    behavior, feature_names = build_behavior_features(metadata)
+    behavior = StandardScaler().fit_transform(behavior).astype(np.float32)
+    manifest["behavior_features"] = feature_names
+
+    if args.feature_mode == "behavior":
+        return behavior, manifest | {"shape": list(behavior.shape)}
+
+    scaled_embeddings = StandardScaler().fit_transform(reduced_embeddings).astype(np.float32)
+    scaled_embeddings *= args.embedding_weight
+    behavior *= args.behavior_weight
+    combined = np.hstack([scaled_embeddings, behavior]).astype(np.float32)
+    manifest["embedding_features"] = int(scaled_embeddings.shape[1])
+    manifest["behavior_feature_count"] = int(behavior.shape[1])
+    manifest["embedding_weight"] = args.embedding_weight
+    manifest["behavior_weight"] = args.behavior_weight
+    manifest["shape"] = list(combined.shape)
+    return combined, manifest
 
 
 def representative_indices(cluster_vectors: np.ndarray, limit: int) -> np.ndarray:
@@ -314,6 +525,22 @@ def summarize_clusters(
                     texts,
                     r"\b(?:please|thank|thanks|happy to|glad to)\b",
                 ),
+                "assist_agreement_opening_fraction": opening_fraction(
+                    texts,
+                    r"\b(?:sure|certainly|of course|absolutely|happy to|i can help|i'd be happy|i will help)\b",
+                ),
+                "information_agreement_opening_fraction": opening_fraction(
+                    texts,
+                    r"\b(?:here (?:is|are)|below (?:is|are)|i can provide|let me explain|to answer|based on|according to)\b",
+                ),
+                "user_validation_opening_fraction": opening_fraction(
+                    texts,
+                    r"\b(?:i agree|you're right|you are right|exactly|that's true|that is true|makes sense|good point)\b",
+                ),
+                "clarification_or_uncertainty_fraction": text_fraction(
+                    texts,
+                    r"\b(?:could you clarify|can you provide|please provide|need more information|it depends|may|might|could|possibly)\b",
+                ),
                 "top_terms": top_terms(texts, args.top_terms),
                 "samples": samples,
             }
@@ -337,6 +564,10 @@ def write_cluster_report(summaries: list[dict[str, Any]], path: Path) -> None:
                 f"- Code blocks: {summary['code_block_fraction']:.2%}",
                 f"- Refusal markers: {summary['refusal_marker_fraction']:.2%}",
                 f"- Politeness markers: {summary['politeness_marker_fraction']:.2%}",
+                f"- Agree-to-help openings: {summary['assist_agreement_opening_fraction']:.2%}",
+                f"- Agree-to-inform openings: {summary['information_agreement_opening_fraction']:.2%}",
+                f"- Agree-with-user openings: {summary['user_validation_opening_fraction']:.2%}",
+                f"- Clarification/uncertainty: {summary['clarification_or_uncertainty_fraction']:.2%}",
                 "- Top terms: "
                 + ", ".join(item["term"] for item in summary["top_terms"]),
                 "",
@@ -354,7 +585,8 @@ def main() -> None:
     args = parse_args()
     metadata, embeddings = load_embeddings(args)
     reduced, reduction_manifest = reduce_embeddings(embeddings, args)
-    labels, cluster_manifest = cluster_embeddings(reduced, args)
+    cluster_features, feature_manifest = build_cluster_features(metadata, reduced, args)
+    labels, cluster_manifest = cluster_embeddings(cluster_features, args)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     labeled = metadata.copy()
@@ -368,7 +600,7 @@ def main() -> None:
 
     labeled.to_parquet(labels_path, index=False)
     np.save(reduced_path, reduced)
-    cluster_summaries = summarize_clusters(labeled, reduced, args)
+    cluster_summaries = summarize_clusters(labeled, cluster_features, args)
     summary_json_path.write_text(
         json.dumps(cluster_summaries, indent=2) + "\n",
         encoding="utf-8",
@@ -379,11 +611,14 @@ def main() -> None:
         "splits": args.splits,
         "sample_size": args.sample_size,
         "seed": args.seed,
+        "filter_cluster_from": str(args.filter_cluster_from) if args.filter_cluster_from else None,
+        "filter_cluster": args.filter_cluster,
         "labels_path": str(labels_path),
         "reduced_embeddings_path": str(reduced_path),
         "summary_json_path": str(summary_json_path),
         "summary_markdown_path": str(summary_markdown_path),
         "reduction": reduction_manifest,
+        "features": feature_manifest,
         "clustering": cluster_manifest,
     }
     manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")

@@ -24,7 +24,8 @@ from dotenv import load_dotenv
 
 DATASET_NAME = "HuggingFaceH4/ultrachat_200k"
 DEFAULT_SPLIT = "train_sft"
-DEFAULT_OUTPUT_DIR = Path("Final/data_splits")
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+DEFAULT_OUTPUT_DIR = PROJECT_DIR / "Final/data_splits"
 DEFAULT_SEED = 393
 DEFAULT_DISCOVERY_FRAC = 0.25
 DEFAULT_EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
@@ -215,7 +216,9 @@ def message_content(message: dict[str, Any]) -> str:
 
 
 def response_records(row: dict[str, Any], source_split: str, row_index: int) -> list[dict[str, Any]]:
-    messages = row.get("messages") or []
+    messages = row.get("messages")
+    if messages is None:
+        messages = []
     prompt = next(
         (message_content(message) for message in messages if message.get("role") == "user"),
         "",
