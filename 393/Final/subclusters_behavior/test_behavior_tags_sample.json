@@ -1,0 +1,420 @@
+{
+  "algorithm": "one_vs_rest_linear_svm",
+  "svm_engine": "linear-svc",
+  "training_examples": 25000,
+  "tag_count": 16,
+  "threshold": 0.0,
+  "support_vector_counts": null,
+  "results": [
+    {
+      "metadata": {
+        "source_split": "test",
+        "source_row": 0,
+        "response_index": 0,
+        "prompt_id": "de24305c00c8ceae65506d4cb0115b68eace287a8aa7dd4420ff2722875ce0d4",
+        "prompt": "Write a 3-page script for a dramatic scene where a person is stranded in the wilderness, facing harsh weather conditions and dangerous animals. The script should include dialogue and internal thoughts of the character, as well as vivid descriptions of the surroundings and the character's emotions. The scene should have a clear beginning, middle, and end, with a satisfying resolution. Consider the use of flashbacks or other storytelling devices to add depth to the character's backstory and motivation. Use cinematic language to create an immersive and captivating experience for the audience."
+      },
+      "response_preview": "FADE IN:\n\nEXT. WILDERNESS - DAY\n\nWe see a group of backpackers trekking through the wilderness. A man, JAMES (30s), lags behind. His face is pale and sweat drips from his forehead.",
+      "predicted_tags": [
+        "expansive_elaboration",
+        "creative_generation",
+        "collaborative_revision"
+      ],
+      "top_tags": [
+        {
+          "tag": "expansive_elaboration",
+          "score": 0.8250642797392076
+        },
+        {
+          "tag": "creative_generation",
+          "score": 0.7340002053335027
+        },
+        {
+          "tag": "collaborative_revision",
+          "score": 0.6329978315036505
+        },
+        {
+          "tag": "cautious_hedging",
+          "score": -0.042936919659263995
+        },
+        {
+          "tag": "explanatory_reasoning",
+          "score": -0.25701142139874533
+        }
+      ],
+      "feature_names": [
+        "log_words",
+        "log_chars",
+        "words_per_sentence",
+        "chars_per_word",
+        "line_count",
+        "paragraph_count",
+        "list_line_fraction",
+        "list_format",
+        "code_block_count",
+        "code_block",
+        "boundary_disclaimer_marker",
+        "politeness_marker",
+        "assist_agreement_opening",
+        "information_agreement_opening",
+        "user_validation_opening",
+        "hedging_rate",
+        "clarification_or_uncertainty",
+        "enumeration_signal_rate",
+        "action_signal_rate",
+        "revision_signal_rate"
+      ],
+      "features": [
+        6.169610732491456,
+        7.860956364876389,
+        9.352941176470589,
+        5.436058700209643,
+        39,
+        30,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "metadata": {
+        "source_split": "test",
+        "source_row": 0,
+        "response_index": 1,
+        "prompt_id": "de24305c00c8ceae65506d4cb0115b68eace287a8aa7dd4420ff2722875ce0d4",
+        "prompt": "Write a 3-page script for a dramatic scene where a person is stranded in the wilderness, facing harsh weather conditions and dangerous animals. The script should include dialogue and internal thoughts of the character, as well as vivid descriptions of the surroundings and the character's emotions. The scene should have a clear beginning, middle, and end, with a satisfying resolution. Consider the use of flashbacks or other storytelling devices to add depth to the character's backstory and motivation. Use cinematic language to create an immersive and captivating experience for the audience."
+      },
+      "response_preview": "Thank you! I would be happy to add some more backstory to James. Here's a revised script:\n\nFADE IN:\n\nEXT. WILDERNESS - DAY\n\nWe see a group of backpackers trekking through the wilde",
+      "predicted_tags": [
+        "collaborative_revision",
+        "creative_generation",
+        "polite_warmth",
+        "instruction_following"
+      ],
+      "top_tags": [
+        {
+          "tag": "collaborative_revision",
+          "score": 1.8508263840922141
+        },
+        {
+          "tag": "creative_generation",
+          "score": 1.6395626203478084
+        },
+        {
+          "tag": "polite_warmth",
+          "score": 1.6196181879571303
+        },
+        {
+          "tag": "instruction_following",
+          "score": 0.42171697047456264
+        },
+        {
+          "tag": "cautious_hedging",
+          "score": -0.6548866458081342
+        }
+      ],
+      "feature_names": [
+        "log_words",
+        "log_chars",
+        "words_per_sentence",
+        "chars_per_word",
+        "line_count",
+        "paragraph_count",
+        "list_line_fraction",
+        "list_format",
+        "code_block_count",
+        "code_block",
+        "boundary_disclaimer_marker",
+        "politeness_marker",
+        "assist_agreement_opening",
+        "information_agreement_opening",
+        "user_validation_opening",
+        "hedging_rate",
+        "clarification_or_uncertainty",
+        "enumeration_signal_rate",
+        "action_signal_rate",
+        "revision_signal_rate"
+      ],
+      "features": [
+        6.309918278226516,
+        8.019283792916793,
+        8.194029850746269,
+        5.533697632058288,
+        62,
+        42,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0018214936247723133,
+        0.0
+      ]
+    },
+    {
+      "metadata": {
+        "source_split": "test",
+        "source_row": 1,
+        "response_index": 0,
+        "prompt_id": "6f6eb2bfaa161be65c9e24f2edf8525385e58cef227b685012a684eb0c0224a1",
+        "prompt": "Design a landing page for a fitness app that focuses on promoting health and wellness through exercise and diet. The style should be modern and clean, with bright colors and high-quality images. Include a clear call to action and options for users to easily download the app or learn more about its features. Incorporate testimonials or success stories from current users to showcase the app's effectiveness. Make sure the page is mobile-responsive and optimized for search engines."
+      },
+      "response_preview": "Here is a design for a landing page for a fitness app that focuses on promoting health and wellness through exercise and diet:\n\nHeader:\n- Logo in the top left corner\n- Navigation m",
+      "predicted_tags": [
+        "direct_confidence",
+        "explanatory_reasoning",
+        "practical_coaching",
+        "terse_minimalism",
+        "instruction_following"
+      ],
+      "top_tags": [
+        {
+          "tag": "direct_confidence",
+          "score": 1.0002506883936677
+        },
+        {
+          "tag": "explanatory_reasoning",
+          "score": 0.6969040153850705
+        },
+        {
+          "tag": "practical_coaching",
+          "score": 0.3217280770140527
+        },
+        {
+          "tag": "terse_minimalism",
+          "score": 0.20297266287084118
+        },
+        {
+          "tag": "instruction_following",
+          "score": 0.17559833327071822
+        }
+      ],
+      "feature_names": [
+        "log_words",
+        "log_chars",
+        "words_per_sentence",
+        "chars_per_word",
+        "line_count",
+        "paragraph_count",
+        "list_line_fraction",
+        "list_format",
+        "code_block_count",
+        "code_block",
+        "boundary_disclaimer_marker",
+        "politeness_marker",
+        "assist_agreement_opening",
+        "information_agreement_opening",
+        "user_validation_opening",
+        "hedging_rate",
+        "clarification_or_uncertainty",
+        "enumeration_signal_rate",
+        "action_signal_rate",
+        "revision_signal_rate"
+      ],
+      "features": [
+        5.332718793265369,
+        7.221835825288449,
+        68.66666666666667,
+        6.640776699029126,
+        25,
+        6,
+        0.76,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "metadata": {
+        "source_split": "test",
+        "source_row": 1,
+        "response_index": 1,
+        "prompt_id": "6f6eb2bfaa161be65c9e24f2edf8525385e58cef227b685012a684eb0c0224a1",
+        "prompt": "Design a landing page for a fitness app that focuses on promoting health and wellness through exercise and diet. The style should be modern and clean, with bright colors and high-quality images. Include a clear call to action and options for users to easily download the app or learn more about its features. Incorporate testimonials or success stories from current users to showcase the app's effectiveness. Make sure the page is mobile-responsive and optimized for search engines."
+      },
+      "response_preview": "Sure, here's an updated design for the fitness app landing page with additional statistics and more high-quality images of people using the app and exercising:\n\nHeader:\n- Logo in t",
+      "predicted_tags": [
+        "practical_coaching",
+        "instruction_following",
+        "direct_confidence",
+        "explanatory_reasoning",
+        "polite_warmth"
+      ],
+      "top_tags": [
+        {
+          "tag": "practical_coaching",
+          "score": 0.7256278303856608
+        },
+        {
+          "tag": "instruction_following",
+          "score": 0.5875629823827252
+        },
+        {
+          "tag": "direct_confidence",
+          "score": 0.4006898813177337
+        },
+        {
+          "tag": "explanatory_reasoning",
+          "score": 0.18611905242108429
+        },
+        {
+          "tag": "polite_warmth",
+          "score": 0.13599532605443349
+        }
+      ],
+      "feature_names": [
+        "log_words",
+        "log_chars",
+        "words_per_sentence",
+        "chars_per_word",
+        "line_count",
+        "paragraph_count",
+        "list_line_fraction",
+        "list_format",
+        "code_block_count",
+        "code_block",
+        "boundary_disclaimer_marker",
+        "politeness_marker",
+        "assist_agreement_opening",
+        "information_agreement_opening",
+        "user_validation_opening",
+        "hedging_rate",
+        "clarification_or_uncertainty",
+        "enumeration_signal_rate",
+        "action_signal_rate",
+        "revision_signal_rate"
+      ],
+      "features": [
+        5.598421958998375,
+        7.476472381163905,
+        67.25,
+        6.561338289962825,
+        29,
+        6,
+        0.7931034482758621,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0037174721189591076
+      ]
+    },
+    {
+      "metadata": {
+        "source_split": "test",
+        "source_row": 2,
+        "response_index": 0,
+        "prompt_id": "e88e4ff61356f6a34c45e669023a67f93cd9c75d7277b771b5b4b4e79d35b3c7",
+        "prompt": "Using Prolog, write a program that takes in a list and returns all possible permutations of the list. Ensure that the program is well-documented and easy to follow, with clear variable names and appropriate comments. Test the program using multiple input lists of varying lengths to ensure that it produces correct output for each one."
+      },
+      "response_preview": "% Permutations Program in Prolog\n% This program takes a list as input and returns all possible permutations of the list.\n\n% Base case of the recursion.\npermutation([],[]).\n% Predic",
+      "predicted_tags": [
+        "terse_minimalism",
+        "explanatory_reasoning",
+        "direct_confidence"
+      ],
+      "top_tags": [
+        {
+          "tag": "terse_minimalism",
+          "score": 0.6012353518032547
+        },
+        {
+          "tag": "explanatory_reasoning",
+          "score": 0.42859740829465465
+        },
+        {
+          "tag": "direct_confidence",
+          "score": 0.39832539839774533
+        },
+        {
+          "tag": "expansive_elaboration",
+          "score": -0.10632493483737038
+        },
+        {
+          "tag": "collaborative_revision",
+          "score": -0.16955945597171462
+        }
+      ],
+      "feature_names": [
+        "log_words",
+        "log_chars",
+        "words_per_sentence",
+        "chars_per_word",
+        "line_count",
+        "paragraph_count",
+        "list_line_fraction",
+        "list_format",
+        "code_block_count",
+        "code_block",
+        "boundary_disclaimer_marker",
+        "politeness_marker",
+        "assist_agreement_opening",
+        "information_agreement_opening",
+        "user_validation_opening",
+        "hedging_rate",
+        "clarification_or_uncertainty",
+        "enumeration_signal_rate",
+        "action_signal_rate",
+        "revision_signal_rate"
+      ],
+      "features": [
+        5.288267030694535,
+        7.033506484287697,
+        11.588235294117647,
+        5.751269035532995,
+        30,
+        7,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

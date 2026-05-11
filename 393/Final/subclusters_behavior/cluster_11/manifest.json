@@ -1,0 +1,57 @@
+{
+  "splits": [
+    "train",
+    "validation",
+    "test"
+  ],
+  "sample_size": null,
+  "seed": 393,
+  "filter_cluster_from": "Final/cluster_results_kmeans_16/clustered_responses.parquet",
+  "filter_cluster": 11,
+  "labels_path": "Final/subclusters_behavior/cluster_11/clustered_responses.parquet",
+  "reduced_embeddings_path": "Final/subclusters_behavior/cluster_11/reduced_embeddings.npy",
+  "summary_json_path": "Final/subclusters_behavior/cluster_11/cluster_summary.json",
+  "summary_markdown_path": "Final/subclusters_behavior/cluster_11/cluster_summary.md",
+  "reduction": {
+    "input_shape": [
+      799,
+      384
+    ],
+    "pca": {
+      "dims": 50,
+      "explained_variance_ratio_sum": 0.630871057510376
+    },
+    "umap": null,
+    "output_shape": [
+      799,
+      50
+    ]
+  },
+  "features": {
+    "feature_mode": "behavior",
+    "behavior_features": [
+      "log_words",
+      "log_chars",
+      "list_format",
+      "code_block",
+      "refusal_marker",
+      "politeness_marker",
+      "assist_agreement_opening",
+      "information_agreement_opening",
+      "user_validation_opening",
+      "clarification_or_uncertainty"
+    ],
+    "shape": [
+      799,
+      10
+    ]
+  },
+  "clustering": {
+    "algorithm": "kmeans",
+    "kmeans_clusters": 6,
+    "cluster_count": 6,
+    "noise_count": 0,
+    "noise_fraction": 0.0,
+    "inertia": 2867.51904296875
+  }
+}

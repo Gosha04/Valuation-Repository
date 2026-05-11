@@ -51,8 +51,8 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help=(
             "Optional file of responses. Supports .jsonl with a response or "
-            "assistant_output field, .json as a list, or plain text separated "
-            "by blank lines."
+            "assistant_output field, .json as a list, .parquet with an "
+            "assistant_output column, or plain text separated by blank lines."
         ),
     )
     parser.add_argument(
@@ -108,6 +108,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=None,
         help="Optional JSON output path. Results are always printed to stdout.",
+    )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Write --output without printing the full JSON payload to stdout.",
     )
     return parser.parse_args()
 
@@ -262,7 +267,14 @@ def load_training_data(args: argparse.Namespace) -> tuple[list[str], list[list[s
     return texts, labels
 
 
-def load_input_file(path: Path) -> list[str]:
+def response_item(response: str, metadata: dict[str, Any] | None = None) -> dict[str, Any]:
+    return {
+        "response": response,
+        "metadata": metadata or {},
+    }
+
+
+def load_input_file(path: Path) -> list[dict[str, Any]]:
     if not path.exists():
         raise SystemExit(f"Missing input file: {path}")
 
@@ -273,14 +285,19 @@ def load_input_file(path: Path) -> list[str]:
                 continue
             item = json.loads(line)
             if isinstance(item, str):
-                responses.append(item)
+                responses.append(response_item(item))
             elif isinstance(item, dict):
                 value = item.get("response", item.get("assistant_output"))
                 if value is None:
                     raise SystemExit(
                         f"JSONL line {line_number} needs a response or assistant_output field."
                     )
-                responses.append(str(value))
+                metadata = {
+                    key: item_value
+                    for key, item_value in item.items()
+                    if key not in {"response", "assistant_output"}
+                }
+                responses.append(response_item(str(value), metadata))
             else:
                 raise SystemExit(f"Unsupported JSONL item on line {line_number}: {type(item)}")
         return responses
@@ -291,28 +308,50 @@ def load_input_file(path: Path) -> list[str]:
             responses = []
             for index, item in enumerate(data):
                 if isinstance(item, str):
-                    responses.append(item)
+                    responses.append(response_item(item))
                 elif isinstance(item, dict):
                     value = item.get("response", item.get("assistant_output"))
                     if value is None:
                         raise SystemExit(
                             f"JSON item {index} needs a response or assistant_output field."
                         )
-                    responses.append(str(value))
+                    metadata = {
+                        key: item_value
+                        for key, item_value in item.items()
+                        if key not in {"response", "assistant_output"}
+                    }
+                    responses.append(response_item(str(value), metadata))
                 else:
                     raise SystemExit(f"Unsupported JSON item {index}: {type(item)}")
             return responses
         raise SystemExit(".json input must be a list of strings or objects.")
 
+    if path.suffix == ".parquet":
+        frame = pd.read_parquet(path)
+        if "assistant_output" not in frame.columns:
+            raise SystemExit(f"Parquet input needs an assistant_output column: {path}")
+        metadata_columns = [column for column in frame.columns if column != "assistant_output"]
+        return [
+            response_item(
+                response=str(row["assistant_output"]),
+                metadata={
+                    column: row[column]
+                    for column in metadata_columns
+                    if pd.notna(row[column])
+                },
+            )
+            for _, row in frame.iterrows()
+        ]
+
     return [
-        part.strip()
+        response_item(part.strip())
         for part in re.split(r"\n\s*\n", path.read_text(encoding="utf-8"))
         if part.strip()
     ]
 
 
-def load_responses(args: argparse.Namespace) -> list[str]:
-    responses = list(args.response)
+def load_responses(args: argparse.Namespace) -> list[dict[str, Any]]:
+    responses = [response_item(response) for response in args.response]
     if args.input_file is not None:
         responses.extend(load_input_file(args.input_file))
     if args.max_responses is not None:
@@ -372,11 +411,12 @@ def support_vector_counts(classifier: Any, tag_names: list[str]) -> dict[str, in
 def classify_response(
     classifier: Any,
     labeler: Any,
-    response: str,
+    item: dict[str, Any],
     threshold: float,
     top_tags: int,
     max_predicted_tags: int,
 ) -> dict[str, Any]:
+    response = item["response"]
     features = np.asarray([behavior_features(response)], dtype=np.float32)
     scores = classifier.decision_function(features)[0]
     classes = list(labeler.classes_)
@@ -397,6 +437,7 @@ def classify_response(
         predicted = [ranked[0]["tag"]]
 
     return {
+        "metadata": item["metadata"],
         "response_preview": response[:180],
         "predicted_tags": predicted,
         "top_tags": ranked[:top_tags],
@@ -422,7 +463,7 @@ def main() -> None:
             classify_response(
                 classifier=classifier,
                 labeler=labeler,
-                response=response,
+                item=response,
                 threshold=args.threshold,
                 top_tags=args.top_tags,
                 max_predicted_tags=args.max_predicted_tags,
@@ -432,10 +473,11 @@ def main() -> None:
     }
 
     output = json.dumps(results, indent=2)
-    print(output)
     if args.output is not None:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(output + "\n", encoding="utf-8")
+    if not args.quiet:
+        print(output)
 
 
 if __name__ == "__main__":

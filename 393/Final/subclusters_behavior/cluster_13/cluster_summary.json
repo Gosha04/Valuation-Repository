@@ -1,0 +1,584 @@
+[
+  {
+    "cluster": 0,
+    "is_noise": false,
+    "members": 275,
+    "fraction": 0.25,
+    "avg_chars": 1763.9272727272728,
+    "median_chars": 1492.0,
+    "avg_words": 266.51272727272726,
+    "median_words": 227.0,
+    "list_format_fraction": 0.4618181818181818,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 0.0,
+    "information_agreement_opening_fraction": 0.0,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.3418181818181818,
+    "top_terms": [
+      {
+        "term": "students",
+        "count": 772
+      },
+      {
+        "term": "learning",
+        "count": 400
+      },
+      {
+        "term": "education",
+        "count": 364
+      },
+      {
+        "term": "has",
+        "count": 293
+      },
+      {
+        "term": "skills",
+        "count": 292
+      },
+      {
+        "term": "research",
+        "count": 290
+      },
+      {
+        "term": "program",
+        "count": 269
+      },
+      {
+        "term": "help",
+        "count": 220
+      },
+      {
+        "term": "provide",
+        "count": 200
+      },
+      {
+        "term": "these",
+        "count": 200
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 18724,
+        "response_index": 2,
+        "prompt_id": "ad865d011e263cac9e5bf33d1a37b4eb52b9422208982d9b7a69ea1a45d9b5b7",
+        "assistant_output": "Yes, the training for becoming a Squadron Leader is indeed intense and rigorous. It takes years of specialized training and experience to develop the necessary skills and expertise needed for this critical leadership position in the military.\n\nThe time it takes to become a Squadron Leader is highly dependent on the particular armed forces, the service branch, and the individual's skills, qualifications, and seniority. Typically, candidates for Squadron Leader positions are selected from experienced pilots or navigators who have already achieved a certain level of rank in their respective air forces. Generally, it can take 10-15 years or more of military service before an individual is selected to assume a Squadron Leader position.\n\nTo achieve that rank, a candidate must have a certain number of years' experience in the military, typically a bachelor's degree in a relevant field, and completed the Officer training program. They must also have completed Basic Flight Training and received specialized training in one or more specialty areas as a combat pilot, navigator, or other aviation specialty.\n\nAfter these basic requirements are met, gaining promotion to a Squadron Leader position..."
+      },
+      {
+        "source_split": "train",
+        "source_row": 15977,
+        "response_index": 4,
+        "prompt_id": "55efcc078ebd82b28a1ce97308a62ed835415a94f635bfa20bf19a8092179aa1",
+        "assistant_output": "NYU Tisch School of the Arts stands apart from other film schools in the industry in a few key ways. \n\nFirstly, it boasts an extremely talented and experienced faculty and staff. Many of the teachers are actively working professionals in the film and media industries, bringing a wealth of industry expertise and connections to the classroom. This close relationship between working professionals and students prepares students for \u201creal-world\u201d scenarios better than just going to film school.\n\nSecondly, they have a rigorous curriculum that challenges students to expand their skillsets and creativity while also making sure they are knowledgeable in the business and legal aspects of the entertainment industry.\n\nThirdly, NYU Tisch School of the Arts is located in the heart of New York City, which is a hub for film and media production. Students benefit from being in one of the most vibrant and dynamic creative centers in the world, which affords them access to internships, networking opportunities and the chance to see how industry professionals work.\n\nFourthly, NYU Tisch School of the Arts has state-of-the-art facilities and equipment, which keeps the program at the forefront of the tech..."
+      },
+      {
+        "source_split": "train",
+        "source_row": 15051,
+        "response_index": 0,
+        "prompt_id": "db443beb10486287385a77a2466bca5cecca70e8bb0d0756ee79e280a94fae4f",
+        "assistant_output": "As an assignment writing service, we understand the struggles that students face in completing their homework assignments. We offer a range of writing assistance to help students who lack time or knowledge in different fields of education.\n\nFor instance, if you are struggling with Chemical Engineering Business Admission Essay Samples, our team of experienced writers can provide the necessary support to enable you to submit a high-quality assignment. We have experts in various sub-branches of Chemical Engineering who have the knowledge and skills to handle different topics seamlessly.\n\nOur team can also help you if you are lacking time to complete your homework assignments. With our professional assignment writing services, you can be sure of timely delivery of your work, ensuring that you do not miss out on deadlines.\n\nAdditionally, we have seasoned writers who can help you in understanding different concepts and topics, making it easier for you to solve problems related to your homework assignments. Whether you are lacking knowledge in a particular subject or have a difficult topic, our team can offer the necessary assistance to ensure you submit a well-written assignment.\n\nIn sum..."
+      },
+      {
+        "source_split": "train",
+        "source_row": 28944,
+        "response_index": 0,
+        "prompt_id": "1ad75500287cf82e69ef65c3dfbaebfd2354820304a25986e2dd4e4f5de03d66",
+        "assistant_output": "One specific fear I had in the past was the fear of public speaking. I remember being asked to give a presentation in one of my classes during my sophomore year of college. At the time, I felt incredibly nervous and intimidated by the thought of standing in front of my classmates and delivering a speech.\n\nTo overcome this fear, I employed various strategies that helped me feel more confident and in control of the situation. First, I practiced my speech numerous times, both in front of a mirror and in front of friends and family members. This helped me become more familiar with the material and feel more comfortable with my delivery.\n\nNext, I focused on my breathing and visualization techniques. I would take deep breaths before beginning my speech and visualize myself delivering it confidently and smoothly. I also made a conscious effort to slow down my speech and speak clearly and articulately.\n\nOne challenge I faced during this process was the fear of making mistakes or forgetting parts of my speech. To address this, I created note cards with key bullet points and practiced referring to them throughout my presentation. This helped me stay on track and feel more confident in my del..."
+      },
+      {
+        "source_split": "validation",
+        "source_row": 4484,
+        "response_index": 3,
+        "prompt_id": "05808bf21d3ee82accada3df78ce2ca23e65086262e4aef9b62d7d4097c34b2f",
+        "assistant_output": "The University of East Anglia (UEA) is known for its strong engagement with the local community and the region of East Anglia. It has been recognized for its commitment to public service, work with local businesses and organizations, and promotion of economic growth and social development in the region.\n\nIn particular, UEA stands out for its active involvement in the community and its efforts to promote collaboration between the university, businesses, and organizations in the region. For example, UEA actively partners with local authorities, charities, and community groups to promote public engagement, cultural initiatives, and environmental sustainability, among other areas. Through its collaborative research and development initiatives, support for entrepreneurship and innovation, and workforce development and training programs, UEA has helped to foster economic growth and social development in the region.\n\nUEA's engagement with the local community is also reflected in its public events and activities, which are open to the community and cover a wide range of topics related to the arts, science and technology, business, literature and writing, health and wellbeing, and more. The..."
+      }
+    ]
+  },
+  {
+    "cluster": 1,
+    "is_noise": false,
+    "members": 276,
+    "fraction": 0.2509090909090909,
+    "avg_chars": 1531.8659420289855,
+    "median_chars": 1483.0,
+    "avg_words": 234.79347826086956,
+    "median_words": 229.0,
+    "list_format_fraction": 0.894927536231884,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 0.6666666666666666,
+    "information_agreement_opening_fraction": 1.0,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.33695652173913043,
+    "top_terms": [
+      {
+        "term": "students",
+        "count": 682
+      },
+      {
+        "term": "learning",
+        "count": 329
+      },
+      {
+        "term": "help",
+        "count": 309
+      },
+      {
+        "term": "education",
+        "count": 272
+      },
+      {
+        "term": "here",
+        "count": 261
+      },
+      {
+        "term": "these",
+        "count": 246
+      },
+      {
+        "term": "resources",
+        "count": 207
+      },
+      {
+        "term": "programs",
+        "count": 206
+      },
+      {
+        "term": "school",
+        "count": 205
+      },
+      {
+        "term": "provide",
+        "count": 198
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 6691,
+        "response_index": 2,
+        "prompt_id": "7b9c30b4de401f4c57fce5e15dda8b97d98bfc0216643cc895fea99316fca3ce",
+        "assistant_output": "Sure! Here are some online coding courses that offer a combination of both self-paced and structured learning options:\n\n1. Coursera:\nCoursera offers a range of self-paced coding courses from top universities that also include structured learning opportunities. Most of the courses are self-paced, but they have set deadlines for graded assignments and exams. You can interact with instructors through discussion forums, and some courses offer live sessions with instructors. You can also choose to enroll in a certification program if you prefer a more structured approach to learning. 2. Treehouse:\nTreehouse offers video-based tutorials with a self-paced curriculum that allows you to learn at your own pace. The platform also includes assessments, quizzes, and coding challenges to test your skills and receive regular feedback. The courses also offer badges to acknowledge your progress and achievements. 3. Flatiron School:\nFlatiron School offers a variety of courses on web development, data science, and cybersecurity. The courses allow you to learn at your own pace, but also include a structured curriculum with regular coding challenges and personalized feedback from instructors. The platf..."
+      },
+      {
+        "source_split": "validation",
+        "source_row": 7088,
+        "response_index": 1,
+        "prompt_id": "cf19d37761588c86be184890bddbb50219854833b3a16fa786a769beedd3bec1",
+        "assistant_output": "Sure, here are some examples of the long-term effects that high-quality early childhood education programs can have on a child's health and employment outcomes:\n\n1. Better health: Children who participate in high-quality early childhood education programs are more likely to have better health outcomes as adults, including lower rates of obesity, chronic diseases, and mental health issues.\n\n2. Higher educational attainment: Children who receive high-quality early childhood education are more likely to graduate from high school and attend college, leading to better job prospects and higher incomes.\n\n3. Increased employment prospects: Individuals who received early childhood education are more likely to be employed in higher-paying jobs and have a lower likelihood of being unemployed.\n\n4. Improved social skills: Children who participate in high-quality early childhood education programs are more likely to have better social-emotional skills, which can lead to stronger relationships and success in both personal and professional contexts.\n\n5. Reduced crime rates: Early childhood education has been linked to lower crime rates, as children who participate in these programs are less likely..."
+      },
+      {
+        "source_split": "train",
+        "source_row": 34038,
+        "response_index": 2,
+        "prompt_id": "e3ae64014af85739a7622274586d52a16721e4ee0eda694f3d042bf0bc7a9b0c",
+        "assistant_output": "Certainly! Here are some specific courses and mentors that John found useful for improving his writing skills:\n\n1. Writing Fiction by James Patterson: John found this course on MasterClass to be particularly helpful for improving his fiction writing skills. James Patterson is a well-known author who provides valuable insights on creating compelling plots, developing characters, and writing concise and clear sentences. 2. How to Write a Killer Blog Post by Darren Rowse: John found this course on ProBlogger to be useful for improving his blogging skills. Darren Rowse provides valuable tips on writing headlines, creating engaging content, and promoting blog posts on social media. 3. The Copyblogger Certified Content Marketer Program: John enrolled in this program to improve his copywriting skills. The program covers topics such as content marketing strategy, copywriting best practices, and search engine optimization. 4. Jeff Goins: John found Jeff Goins to be a helpful mentor for improving his writing skills. Jeff is a best-selling author who offers courses and coaching on writing, publishing, and building a platform. 5. Jane Friedman: John also found Jane Friedman to be a helpful men..."
+      },
+      {
+        "source_split": "validation",
+        "source_row": 190,
+        "response_index": 1,
+        "prompt_id": "84b67b955d2143690d848e615069420e1f0ce521cef7fc8e3002312c788a0fcb",
+        "assistant_output": "Sure, here are some ways to enhance the Winter Picture Writing Prompts & Templates for your ESL students:\n\n1. Provide sentence starters: For students who are still developing their writing skills, provide sentence starters to help them get started with their writing. For example, \"In the winter, I like to...\" or \"My favorite winter activity is...\"\n\n2. Use visual aids: Use pictures, illustrations, or word banks to help students understand the prompts and templates. You can provide images or flashcards to help students understand winter-related vocabulary.\n\n3. Use graphic organizers: Use graphic organizers such as mind maps, flowcharts, or Venn diagrams to help students organize their thoughts before they start writing. This can help them to stay focused and write more clearly.\n\n4. Group work: Group students in pairs or small groups and have them work together to complete the writing prompts. Encourage them to share their ideas and discuss the vocabulary and sentence structure with their peers.\n\n5. Provide feedback: Give students feedback on their writing to help them improve. You can use a rubric or checklist to assess their writing and provide specific feedback on areas they can im..."
+      },
+      {
+        "source_split": "train",
+        "source_row": 14028,
+        "response_index": 2,
+        "prompt_id": "3f2a2a1373284b6d007c112e040ae350569213f30e956c7f1fef161cd4f622b7",
+        "assistant_output": "Certainly! Here are some online courses and MOOCs that focus on providing education for individuals in countries with limited traditional forms of education, and are accessible via mobile devices:\n\n1. Coursera for Refugees - This is a program designed to help refugees and displaced persons access educational opportunities in order to improve their employment prospects and build their skills.\n\n2. MOOEC - The Massive Open Online English Course (MOOEC) is a free online program that offers courses in English language learning to individuals all over the world.\n\n3. ALISON - ALISON is an online learning platform that offers free access to courses in a variety of subjects, including workplace skills, health and safety, and technology. The courses are accessible via mobile devices and can be used by individuals all over the world.\n\n4. EdX Mobile App - edX offers a mobile app that allows learners to access free online courses from some of the world's top universities. The app is available for iOS and Android devices.\n\n5. Duolingo - Duolingo is a free language learning app that is designed to be accessible via mobile devices. The app offers courses in a variety of languages, including Englis..."
+      }
+    ]
+  },
+  {
+    "cluster": 2,
+    "is_noise": false,
+    "members": 340,
+    "fraction": 0.3090909090909091,
+    "avg_chars": 613.6941176470589,
+    "median_chars": 618.5,
+    "avg_words": 95.95882352941176,
+    "median_words": 95.5,
+    "list_format_fraction": 0.07352941176470588,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 0.09705882352941177,
+    "information_agreement_opening_fraction": 0.07647058823529412,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.19705882352941176,
+    "top_terms": [
+      {
+        "term": "students",
+        "count": 243
+      },
+      {
+        "term": "school",
+        "count": 138
+      },
+      {
+        "term": "has",
+        "count": 127
+      },
+      {
+        "term": "education",
+        "count": 107
+      },
+      {
+        "term": "research",
+        "count": 94
+      },
+      {
+        "term": "skills",
+        "count": 92
+      },
+      {
+        "term": "university",
+        "count": 85
+      },
+      {
+        "term": "these",
+        "count": 82
+      },
+      {
+        "term": "writing",
+        "count": 81
+      },
+      {
+        "term": "academic",
+        "count": 80
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 26058,
+        "response_index": 0,
+        "prompt_id": "2b07f36b4f08af4eed6a689521f590018c292ef3d85e8c97c61e74f02067edc7",
+        "assistant_output": "The audio recording feature of the app helps students to practice their language skills by allowing them to hear their own productions, which can help with self-monitoring and self-correction. This can also help with developing their listening skills, as they can compare their own recordings to the audio instructions provided in the app. Additionally, the feature can be used in activities such as \"Make up sentences\", where students can practice creating sentences using regular and irregular plurals, and then listen to their own recordings to assess their performance."
+      },
+      {
+        "source_split": "validation",
+        "source_row": 6207,
+        "response_index": 0,
+        "prompt_id": "af89420c9e3a5a89e6c316a797fe5ca06fdab4245bc602d8928cd83bbedd4e04",
+        "assistant_output": "Leveled reading is a common instructional approach in which students are restricted to reading books at their reading level. However, one prominent reading expert has found no evidence that the system works and instead inflicts psychological harm on untold numbers of children. It also fails to boost kids\u2019 learning while simultaneously damaging their self-esteem. In contrast, a model of teaching that relies on direct instruction has repeatedly been shown to work far better than the standard approach when it comes to boosting kids\u2019 academic achievement and increasing their self-esteem."
+      },
+      {
+        "source_split": "train",
+        "source_row": 26662,
+        "response_index": 0,
+        "prompt_id": "0fc0397e4b6f2bd01638ae2ba7860acc8d23ec4290893fd9211e8b0e89c6c98a",
+        "assistant_output": "Yes, it is possible to transfer the writing style of the text material from informal to formal by making changes in the language, tone, and structure of the text. For example, in the given text, informal language and colloquial expressions are used, which can be replaced with formal equivalents. The tone can be made more professional and objective, and the structure can be modified to include an introduction, body, and conclusion with clear and concise sentences. This will make the text suitable for formal contexts such as academic or business writing."
+      },
+      {
+        "source_split": "train",
+        "source_row": 5560,
+        "response_index": 0,
+        "prompt_id": "2d269f7166b91c6fb97b40b88f5197f339925895862f7bc8e7d65a458121db6c",
+        "assistant_output": "Lee Bennett Hopkins believes that poetry is an important vehicle for children's education, particularly for slower readers, because poems are usually short, have simple vocabulary, and can convey more emotions and thoughts than an entire novel. Hopkins suggests that poetry should be taught by simply reading a poem, thinking about it and feeling it, and then moving on to the next subject, rather than over-analyzing and dissecting the poem. He believes that the love of poetry is killed when teachers use the DAM (Dissecting, Analyzing, and forced Memorization) approach to teaching poetry."
+      },
+      {
+        "source_split": "train",
+        "source_row": 13799,
+        "response_index": 2,
+        "prompt_id": "9693a1357684a782d4034d06430c778389f979cca22d6908edf72980611c1f39",
+        "assistant_output": "Yes, I can give you that information. The JFM Foundation was able to provide school supplies and backpacks to a total of 300 underprivileged children in Bgy. Calubihan, Jaro, Iloilo through the Back to School Project-Visayas Outreach. These children came from low-income families and received the school supplies that they needed to help them with their education. The JFM Foundation's goal with this project was to help promote education and to make sure that every child has equal access to opportunities that can lead to success in the future."
+      }
+    ]
+  },
+  {
+    "cluster": 3,
+    "is_noise": false,
+    "members": 26,
+    "fraction": 0.023636363636363636,
+    "avg_chars": 1224.5384615384614,
+    "median_chars": 866.0,
+    "avg_words": 189.76923076923077,
+    "median_words": 135.0,
+    "list_format_fraction": 0.34615384615384615,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 1.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 0.19230769230769232,
+    "information_agreement_opening_fraction": 0.3076923076923077,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.4230769230769231,
+    "top_terms": [
+      {
+        "term": "students",
+        "count": 59
+      },
+      {
+        "term": "education",
+        "count": 49
+      },
+      {
+        "term": "access",
+        "count": 33
+      },
+      {
+        "term": "university",
+        "count": 27
+      },
+      {
+        "term": "income",
+        "count": 27
+      },
+      {
+        "term": "college",
+        "count": 27
+      },
+      {
+        "term": "low",
+        "count": 26
+      },
+      {
+        "term": "information",
+        "count": 24
+      },
+      {
+        "term": "these",
+        "count": 23
+      },
+      {
+        "term": "research",
+        "count": 23
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "validation",
+        "source_row": 2420,
+        "response_index": 2,
+        "prompt_id": "90d9d51428491c53a95ffe1082298b4ef27e6d4b84ad8b08e809033d5d3199d2",
+        "assistant_output": "I don't have access to a specific school's curriculum details, but generally speaking, the arts program is often integrated into the overall curriculum in a variety of ways. This could range from incorporating art and music lessons into other subjects, such as using music to teach maths concepts or art to teach history, to designing entire units of study around arts topics, like exploring the elements of music or learning about famous artists. In this way, the arts program can help to enhance students' understanding of other subjects and to approach subjects from different perspectives. Additionally, the arts program may have connections to school events, such as concerts or art shows, where the student's work and learning can be highlighted and celebrated. Overall, integrating the arts into the curriculum can help students to develop a wider range of skills, foster creativity, and enhance their love for learning."
+      },
+      {
+        "source_split": "train",
+        "source_row": 2633,
+        "response_index": 3,
+        "prompt_id": "c1041e70a6ef184aca629529d82792eb27fea69a1b652e06088817c05286f9cb",
+        "assistant_output": "I am not able to predict with certainty the effectiveness of these initiatives in addressing teacher shortages in newcastle. However, these initiatives have been implemented based on research and data that indicate a need for more teachers in certain subjects and regions. \n\nfinancial incentives and recruitment campaigns have been shown to be effective in attracting more people to the teaching profession, particularly those in shortage subjects. Teacher training programmes, such as school direct and teach first, provide an additional pathway into teaching for people with relevant experience.\n\nretention initiatives such as improving working conditions, offering additional support and mentoring to new teachers may improve teacher job satisfaction and retention. \n\nthese initiatives may require time to fully take effect and additional support may need to be added over time; but overall, with the right implementation and support, these initiatives can play a vital role in addressing teacher shortages in newcastle and overall, in the uk."
+      },
+      {
+        "source_split": "train",
+        "source_row": 21966,
+        "response_index": 0,
+        "prompt_id": "5eeea6b972bcf3a389c9d6c0882910698908a2dbb5bc6c57c701032b008cc878",
+        "assistant_output": "The US Education Department's Enhancing Education Through Technology Program is seeing a significant increase in federal funds for classroom technology in schools across the US. However, some people are concerned about the breakdown of resources, as the funds can only be used for technology expenses and development and cannot be used to save teachers' jobs or after-school programs. President Obama has revived the program with a $650 million boost for the next two years. Although high-tech instruction models have initially shown a rise in achievement, some people doubt whether this allocation of funds meets current school needs."
+      },
+      {
+        "source_split": "train",
+        "source_row": 13292,
+        "response_index": 0,
+        "prompt_id": "d51408d075ca7681292946e9e0d78ab3b0a3a59a6775594e56f83a28f45834f0",
+        "assistant_output": "The Associate in Applied Sciences in General Occupational and Technical Studies degree requires a minimum of 63 credits with a \u201cC\u201d (2.0) or above average for all college work attempted. Students can include credit earned in course, certificate completions, and/or credit for prior learning hours toward the degree, but they must be part of an educational plan of study determined in consultation with an occupational and technical advisor. The degree must balance a core of occupational and/or technical skills with a minimum of 15 credit hours of general education courses. The remaining general education courses can be selected from any of the six categories, with three categories used to satisfy the general education component. Students are required to complete 10 credits of college coursework at Black Hawk College, but credit earned through national testing programs or college proficiency examinations cannot be included within this 10-hour requirement. Students may earn up to a maximum of 48 credit hours for the GOTS degree through college-approved prior learning options."
+      },
+      {
+        "source_split": "validation",
+        "source_row": 2692,
+        "response_index": 4,
+        "prompt_id": "2892b25a14e4c2b61046e3bc7441d44ab3c7bf716c0f5b53cf29d26d556965d4",
+        "assistant_output": "While I don't have specific knowledge about Stanford's scholarship application requirements, I can tell you that most universities have their own individual requirements for scholarship applications. To get more detailed information, it is best to visit Stanford's financial aid website, which should have more specific details about the types of scholarships they offer and the eligibility requirements for each one. Typically, scholarships may be geared towards certain types of students (e.g. Undergraduate, graduate, international, etc.) and may require specific academic achievements or other criteria to qualify. The application process may also vary depending on the scholarship, so be sure to review the instructions carefully, and make sure you have all the necessary materials and documentation."
+      }
+    ]
+  },
+  {
+    "cluster": 4,
+    "is_noise": false,
+    "members": 48,
+    "fraction": 0.04363636363636364,
+    "avg_chars": 1545.5208333333333,
+    "median_chars": 1515.0,
+    "avg_words": 250.75,
+    "median_words": 248.5,
+    "list_format_fraction": 0.3333333333333333,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 1.0,
+    "assist_agreement_opening_fraction": 0.5625,
+    "information_agreement_opening_fraction": 0.1875,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.375,
+    "top_terms": [
+      {
+        "term": "education",
+        "count": 89
+      },
+      {
+        "term": "my",
+        "count": 78
+      },
+      {
+        "term": "students",
+        "count": 64
+      },
+      {
+        "term": "learning",
+        "count": 56
+      },
+      {
+        "term": "help",
+        "count": 55
+      },
+      {
+        "term": "me",
+        "count": 52
+      },
+      {
+        "term": "school",
+        "count": 44
+      },
+      {
+        "term": "support",
+        "count": 37
+      },
+      {
+        "term": "skills",
+        "count": 35
+      },
+      {
+        "term": "provide",
+        "count": 34
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "validation",
+        "source_row": 521,
+        "response_index": 1,
+        "prompt_id": "e148e7c680c35d5b260752c202debdd33611dd966ae1e9deb3517cf9e83e8912",
+        "assistant_output": "Absolutely! Thank you for your question. Regarding education, my policy proposals include increasing funding for public schools, investing in teacher training and support, and expanding access to higher education. To do this, we would prioritize education in our federal budget and work with states to ensure that resources are being used effectively. In addition, I would work to reduce student debt burdens by increasing financial aid and reforming repayment programs. It's time to invest in our future and give every student the opportunity to succeed. As for job creation, my plans include investing in sustainable infrastructure projects, such as renewable energy and public transportation. These projects would not only create jobs but also help reduce our carbon footprint and combat climate change. I also believe in creating tax incentives for businesses that create jobs domestically and penalizing companies that outsource jobs overseas. By prioritizing job creation and supporting our workforce, we can build an economy that works for every American. I hope this answers your question and demonstrates my commitment to making real change for the betterment of our country. Thank you for y..."
+      },
+      {
+        "source_split": "train",
+        "source_row": 35024,
+        "response_index": 1,
+        "prompt_id": "3accba12be4972c1e4b27490bd9b0b4cee7a39c2da644888450e80d4c768f4bf",
+        "assistant_output": "Certainly! Our Back-to-School promotions will be launching soon, and we are excited to offer a range of products and services at affordable prices. We will be offering discounts on our new range of smartphone accessories such as phone cases, tempered glass screen protectors and wireless chargers, which we believe will be great products for students heading back to school.\n\nIn addition, we will be offering deals on our range of laptops and tablets, perfect for students looking for dependable devices for their studies. We are also excited to announce that we will be offering a discount on our new web design and development services, ideal for schools and educational institutions looking to revamp their websites.\n\nAt [Company Name], we are committed to making Back-to-School season stress-free for our customers by offering great deals on our products and services. Keep an eye out for our upcoming promotions, and feel free to contact us if you have any questions.\n\nThank you for your interest in [Company Name]!"
+      },
+      {
+        "source_split": "train",
+        "source_row": 7193,
+        "response_index": 3,
+        "prompt_id": "784175702850aa1efffc3264261d848172949bc0f2dd1a1ba55672730f6fabf7",
+        "assistant_output": "Yes, all of the diving schools and guides that I mentioned offer courses and packages that cater to all levels of experience, including beginners. If you're new to scuba diving, you'll want to start with an introductory course, such as the PADI Discover Scuba Diving Program. \n\nDuring this course, you'll receive a brief lesson on diving techniques, safety procedures, and equipment use, and then you'll have the opportunity to dive in shallow water for a limited time with an experienced instructor.\n\nIf you decide to continue your training with a full certification course, most diving schools and guides offer courses such as the PADI Open Water Diver Course. This course is designed to introduce you to the essential knowledge and skills you need to safely explore the underwater world. \n\nAgain, just make sure you select a diving school that offers courses and packages that cater to beginners, and don't be afraid to ask questions and express any concerns or fears you have beforehand. They'll be happy to assist you in any way they can to ensure you have a safe and enjoyable diving experience."
+      },
+      {
+        "source_split": "train",
+        "source_row": 36198,
+        "response_index": 0,
+        "prompt_id": "4331ba302a29456ab954220dfb05ddd0c9b97c8f89e1c19ce1c6db91a08e0232",
+        "assistant_output": "Dear Mrs. Johnson,\n\nIt's been years since we last spoke, and I hope this letter finds you well. I wanted to take a moment to say thank you for the impact you had on me during my time in your class. Your teaching not only contributed to my academic success but also helped me develop the skills that have served me well in my personal and professional life.\n\nSince I left your class, I graduated from high school and then pursued a degree in computer science. Now, I work in software development for a tech company in San Francisco. It's a challenging and rewarding career that I love, and I feel grateful that I can use my skills to make a positive impact on the world.\n\nAlthough we haven't spoken for a while, I still think fondly of our time together. You inspired me and encouraged me to be curious and resourceful, and those qualities have stayed with me to this day. I'm grateful for your guidance, and I'm sure many other students feel the same way.\n\nI'd love to hear how you're doing these days and what you're up to. Please feel free to write back and catch me up on your life. Also, if you're ever in San Francisco, please let me know. I'd enjoy catching up and showing you around.\n\nThank yo..."
+      },
+      {
+        "source_split": "train",
+        "source_row": 29905,
+        "response_index": 1,
+        "prompt_id": "7053b7cd4c8a27645ed816dc4fdba6fd4c61a22d93b410d0aa7eb635e9300dd0",
+        "assistant_output": "Employee 2: Absolutely! Depending on your industry and job role, there are various options available. Have you checked out any industry-specific conferences or webinars? Those can be a great way to learn about the latest trends and advancements in your field. Additionally, many universities offer continuing education courses related to specific industries. You can also look into online platforms like LinkedIn Learning or Udemy, which offer a wide range of courses on various topics. \n\nEmployee 1: Those all sound like great options. I'll definitely check them out. Thank you for the suggestions!\n\nEmployee 2: Of course! Don't hesitate to reach out if you have any further questions or if there's anything I can do to support your continuous learning journey. Together, we can both grow and succeed within the company."
+      }
+    ]
+  },
+  {
+    "cluster": 5,
+    "is_noise": false,
+    "members": 135,
+    "fraction": 0.12272727272727273,
+    "avg_chars": 1496.5925925925926,
+    "median_chars": 1465.0,
+    "avg_words": 230.14814814814815,
+    "median_words": 222.0,
+    "list_format_fraction": 0.4074074074074074,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 1.0,
+    "information_agreement_opening_fraction": 0.0,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.2814814814814815,
+    "top_terms": [
+      {
+        "term": "students",
+        "count": 241
+      },
+      {
+        "term": "learning",
+        "count": 114
+      },
+      {
+        "term": "skills",
+        "count": 104
+      },
+      {
+        "term": "program",
+        "count": 96
+      },
+      {
+        "term": "social",
+        "count": 92
+      },
+      {
+        "term": "these",
+        "count": 92
+      },
+      {
+        "term": "education",
+        "count": 90
+      },
+      {
+        "term": "school",
+        "count": 82
+      },
+      {
+        "term": "help",
+        "count": 79
+      },
+      {
+        "term": "academic",
+        "count": 77
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "validation",
+        "source_row": 7033,
+        "response_index": 2,
+        "prompt_id": "dd4e9ad909f84320c9ee02549af84da4a754a50acbda7a386f974c48ae81f401",
+        "assistant_output": "Yes, of course! The Department of Modern Languages at the University of Mississippi offers several study abroad programs in South Korea. One program is the summer language program, which takes place at Korea University in Seoul. This program offers intensive Korean language classes, cultural activities, and excursions. The program is open to students at all levels of Korean study, and credits earned can be applied towards the Korean minor.\n\nThe department also offers a semester-long study abroad program at Korea University. This program offers language and content courses in Korean studies, as well as internships and volunteer opportunities. The program is open to students who have completed at least two years of Korean language courses, and credits earned can be applied towards the Korean minor or towards general electives.\n\nFinally, the study abroad office at the University of Mississippi offers a variety of other study abroad programs in South Korea, including semester programs at Yonsei University, Ewha Womans University, and Hanyang University. These programs offer courses in a variety of fields, as well as cultural activities and excursions.\n\nStudents interested in participat..."
+      },
+      {
+        "source_split": "train",
+        "source_row": 8941,
+        "response_index": 1,
+        "prompt_id": "1a432a7eb731ca7ac0428a8e1d6b26f037beca0431de4b8774896b74edeae0c4",
+        "assistant_output": "Sure, Bob McDonald is a well-known science journalist in Canada who is best known for hosting CBC Radio's science program Quirks & Quarks. He has worked in the field of science communication for several decades and is a proponent of making science accessible to the general public through storytelling and engaging demonstrations.\n\nMcDonald has a background in English, philosophy, and theater, which he uses to bring science news to life. He employs standard tenets of good storytelling when writing about science news and focuses on creating compelling settings, characters, plotlines, and tension to keep his audience engaged.\n\nMcDonald is also known for his hands-on approach to science education. He has conducted engaging science demonstrations for kids that use everyday items like ginger ale, candles, and bowls to teach the basic principles of science. McDonald believes that by introducing children to complicated subjects in a straightforward way, they will stay interested and engaged.\n\nAdditionally, McDonald has published several books, including \"Measuring the Earth with a Stick: Science as I've Seen It,\" a collection of essays that recount his experiences as a science journalist. H..."
+      },
+      {
+        "source_split": "validation",
+        "source_row": 911,
+        "response_index": 1,
+        "prompt_id": "09e63864c17a91c7661161c90bcad76cce92189704c2a0c5b25499fbafd4cbef",
+        "assistant_output": "Certainly! The instructors at the yoga studio are highly qualified and experienced in their fields. Each of them holds a Yoga Alliance certification, with a minimum of 200 hours of training, and many of them have advanced certification in specific styles, such as Ashtanga, Vinyasa, or Yin Yoga. The instructors come from diverse backgrounds, and they bring a variety of experiences to their classes. Many of them have trained or taught at well-known yoga schools or retreat centers, and they have experience working with students of all levels. In terms of special events or workshops, the studio regularly hosts workshops and events with visiting teachers or experts in various related fields, such as meditation, Ayurveda, or yoga anatomy. The workshops are usually held on weekends or in the evenings, and they provide an opportunity for students to deepen their practice, learn new techniques, or explore specific areas of interest. The studio also organizes community events, such as outdoor yoga classes, charity events, or film screenings, to create a sense of community and connection among the students. Overall, the yoga studio provides an excellent opportunity for beginners and advanced..."
+      },
+      {
+        "source_split": "test",
+        "source_row": 6832,
+        "response_index": 1,
+        "prompt_id": "c970b0b3ad32b72f33794ba0bbbfe8bc5b15dc9c80a9b9900e792166dab8f160",
+        "assistant_output": "Of course! One example of the negative impact of technology on critical thinking skills can be seen in the way we approach online information. With an unlimited amount of information at our fingertips, we tend to take everything we find online at face value instead of critically analyzing it. This can lead to the spread of misinformation and false beliefs, which can have serious consequences.\n\nAnother example is the impact of social media on critical thinking skills. Social media algorithms are designed to show us content that we are more likely to engage with, leading to a \"filter bubble\" where we only see content that reinforces our existing beliefs and opinions. This can make it difficult for individuals to engage with diverse perspectives and critically consider alternative viewpoints, leading to a polarized society with reduced capacity for civil discourse.\n\nIn addition, the over-reliance on technology for decision-making can also reduce critical thinking skills. For instance, the use of navigation apps means that we no longer have to rely on our sense of direction or problem-solving skills to find our way around. This can lead to a reduction in spatial awareness and a diminis..."
+      },
+      {
+        "source_split": "test",
+        "source_row": 5798,
+        "response_index": 1,
+        "prompt_id": "ddfb0819a4cdfea81d6b339c99b5efc5e5efc3faaeddefd9e59a746ae02d790b",
+        "assistant_output": "Sure! The social-emotional perspective of the DIG Literacy program is integrated throughout the program. This approach recognizes that children's emotional well-being is closely linked to their academic success. It also recognizes the importance of building positive relationships and interpersonal skills that help children thrive in later years.\n\nTo achieve this, DIG Literacy presents literacy skills in a way that connects to children's personal experiences and emotions. For example, stories and songs featuring The Letter People use relatable scenarios and emotions to teach literacy concepts. The program also includes real-life situations and opportunities to role-play, allowing children to practice social-emotional skills in a safe and supportive environment.\n\nThe use of hand-puppets also supports the social-emotional perspective of the program. The Letter People are depicted with distinct personalities and unique characteristics, allowing children to develop empathy and social awareness as they learn about different emotions and interpersonal relationships.\n\nFinally, Teacher's Guides provide explicit guidance for scaffolding oral language development and comprehension in developm..."
+      }
+    ]
+  }
+]

@@ -1,0 +1,196 @@
+[
+  {
+    "cluster": 0,
+    "is_noise": false,
+    "members": 2984,
+    "fraction": 0.11936,
+    "avg_chars": 1105.468163538874,
+    "median_chars": 1037.0,
+    "avg_words": 191.11193029490616,
+    "median_words": 179.0,
+    "list_format_fraction": 0.7268766756032171,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.029155495978552277,
+    "politeness_marker_fraction": 0.03987935656836461,
+    "assist_agreement_opening_fraction": 0.4896112600536193,
+    "information_agreement_opening_fraction": 0.45878016085790885,
+    "user_validation_opening_fraction": 0.0006702412868632708,
+    "clarification_or_uncertainty_fraction": 0.1665549597855228,
+    "top_terms": [
+      {
+        "term": "add",
+        "count": 3456
+      },
+      {
+        "term": "cup",
+        "count": 2061
+      },
+      {
+        "term": "ingredients",
+        "count": 1787
+      },
+      {
+        "term": "here",
+        "count": 1783
+      },
+      {
+        "term": "sauce",
+        "count": 1770
+      },
+      {
+        "term": "salt",
+        "count": 1732
+      },
+      {
+        "term": "flavor",
+        "count": 1712
+      },
+      {
+        "term": "minutes",
+        "count": 1694
+      },
+      {
+        "term": "pepper",
+        "count": 1652
+      },
+      {
+        "term": "cheese",
+        "count": 1596
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 32238,
+        "response_index": 2,
+        "prompt_id": "59ca8d5055585190477943b5783f3743abec0062f6af8cbf272f06ea1645f9e1",
+        "assistant_output": "Definitely! Here are some sweet and spicy serving options to pair with this dip:\n\n1. Sweet: Sliced apples, pears, or grapes add natural sweetness that pairs well with the creaminess of the dip.\n\n2. Spicy: Add a sprinkle of red pepper flakes on top of the dip for an extra kick, or serve it alongside spicy foods like buffalo wings or jalape\u00f1o poppers.\n\n3. Sweet and Spicy: Drizzle honey on top of the dip and pair it with sliced jalape\u00f1os or hot pepper jelly.\n\n4. Sweet Potatoes: Try dipping roasted sweet potato wedges into the dip for a delicious, healthy snack.\n\n5. Spicy Crackers: Serve the dip with either jalapeno-flavored crackers, or use cayenne pepper to give simple crackers that extra zing.\n\n6. Fruits: Aside from apples, and pears, you can also have berries and melon to offer a refreshing dip experience.\n\n7. Vegetables: If you want some more veggies, try cherry peppers or chili peppers to add an extra dose of heat, or as an alternative, cucumber or carrot sticks for some cool freshness.\n\nI hope these additional serving options give you some ideas for how to enjoy this delicious dip!"
+      },
+      {
+        "source_split": "train",
+        "source_row": 12825,
+        "response_index": 4,
+        "prompt_id": "f7eea60f89eee52153e500e5676cdf66da1cb7224c17d2b6070595060e6b929c",
+        "assistant_output": "Yes, here are some fun and unique popcorn seasonings you can try:\n\n1. Cinnamon Sugar Popcorn: Mix together 1 tablespoon of sugar and 1/4 teaspoon of cinnamon in a small bowl. Sprinkle over freshly popped popcorn and toss to coat.\n\n2. Parmesan Garlic Popcorn: In a small bowl mix together grated Parmesan cheese, garlic powder, and salt. Sprinkle over freshly popped popcorn and toss to coat.\n\n3. Taco Popcorn: Mix together chili powder, cumin, oregano, paprika, and a pinch of salt in a small bowl. Sprinkle over freshly popped popcorn and toss to coat.\n\n4. Ranch Popcorn: Mix together garlic powder, onion powder, dried dill, dried parsley, and salt in a small bowl. Sprinkle over freshly popped popcorn and toss to coat.\n\n5. Lemon Pepper Popcorn: Mix together lemon zest, black pepper, and salt in a small bowl. Sprinkle over freshly popped popcorn and toss to coat.\n\n6. S'mores Popcorn: Melt some chocolate chips in a small bowl and drizzle over freshly popped popcorn. Then sprinkle graham cracker crumbs and mini marshmallows over the chocolate and toss to coat.\n\n7. Everything Bagel Popcorn: Mix together sesame seeds, poppy seeds, dried minced onion, dried minced garlic, and salt in a small b..."
+      },
+      {
+        "source_split": "test",
+        "source_row": 4530,
+        "response_index": 1,
+        "prompt_id": "a64174c165acca56e229c456fd6cf8fab4ae750e093833762678bd9655074a48",
+        "assistant_output": "Sure! Our cheese plate features a selection of artisanal cheeses from regional dairy farms, highlighting their unique flavors and textures. Some of the local cheeses we feature may include creamy brie, tangy blue cheese, nutty cheddar, and sharp parmesan. We pair the cheeses with complementary seasonal fruits, such as sliced apples, pears, or berries, and add some crunchy nuts, like almonds or walnuts, to provide contrast in texture. Finally, we serve it with crispy bread for a satisfying crunch. It's a perfect appetizer to share and enjoy the regional flavors."
+      },
+      {
+        "source_split": "train",
+        "source_row": 5587,
+        "response_index": 2,
+        "prompt_id": "e26236863511e5b699b8b866859f9468088a6c2bb4bdd0170598d15aa84c6a59",
+        "assistant_output": "Absolutely! Here are some additional flavoring options for the DIY Movie Night Snacks project that are budget-friendly:\n\n1. Spicy Popcorn: Add a pinch of cayenne pepper and chili powder to the melted butter before pouring it over the popcorn. Sprinkle with salt and enjoy a spicy kick. 2. Ranch Popcorn: Sprinkle a tablespoon of dry ranch seasoning over the popcorn before tossing with melted butter. It's a tangy and savory flavor that's sure to satisfy. 3. Garlic Herb Popcorn: Melt butter with garlic powder and dried herbs (such as thyme or rosemary) before pouring over the popcorn. A delicious and aromatic option. 4. Cinnamon Sugar Popcorn: Mix sugar and cinnamon together in a separate bowl. Drizzle melted butter over the popcorn and sprinkle the cinnamon sugar mixture on top. A sweet and satisfying treat. 5. Parmesan and Herb Popcorn: Melt butter and stir in grated Parmesan cheese and dried herbs (such as oregano or basil) before pouring over the popcorn. Savory and delicious. With these additional flavoring options, your DIY Movie Night Snacks will be even more versatile and budget-friendly!"
+      },
+      {
+        "source_split": "train",
+        "source_row": 27060,
+        "response_index": 1,
+        "prompt_id": "22dfcaa9af51e5e52884df6273c247d71bc8f9306cac80a63908e98d3047763f",
+        "assistant_output": "Sure, here are some creative toppings that you can add to your caramel popcorn:\n\n1. Chocolate chips: After the popcorn has cooled, drizzle it with melted chocolate chips. 2. Nuts: Add your favorite nuts like almonds, pecans, or peanuts to the popcorn before pouring over the caramel mixture. 3. Candy: Crushed up candy like M&M's, Skittles, or Reese's Pieces can add a fun, colorful twist to your popcorn. 4. Spices: Add some cinnamon or pumpkin spice to the caramel mixture for a fall-inspired treat. 5. Sea salt: A sprinkle of sea salt can enhance the flavor of the caramel and add a salty-sweet contrast. 6. Bacon bits: For a savory twist, add some chopped-up cooked bacon bits to your caramel popcorn. 7. Coconut flakes: Toasted coconut flakes can add a tropical flavor to your caramel popcorn. 8. Dried fruit: Add some dried cranberries, raisins or apricots to the popcorn before pouring over the caramel mixture for a little bit of natural sweetness. Feel free to experiment with different combinations of toppings to find your perfect flavor!"
+      }
+    ]
+  },
+  {
+    "cluster": 1,
+    "is_noise": false,
+    "members": 22016,
+    "fraction": 0.88064,
+    "avg_chars": 1453.8021893168604,
+    "median_chars": 1324.0,
+    "avg_words": 235.37327398255815,
+    "median_words": 213.0,
+    "list_format_fraction": 0.39226017441860467,
+    "code_block_fraction": 0.033521075581395346,
+    "refusal_marker_fraction": 0.08493822674418605,
+    "politeness_marker_fraction": 0.08098655523255814,
+    "assist_agreement_opening_fraction": 0.39621184593023256,
+    "information_agreement_opening_fraction": 0.28992550872093026,
+    "user_validation_opening_fraction": 0.001907703488372093,
+    "clarification_or_uncertainty_fraction": 0.31654251453488375,
+    "top_terms": [
+      {
+        "term": "her",
+        "count": 17819
+      },
+      {
+        "term": "she",
+        "count": 16265
+      },
+      {
+        "term": "had",
+        "count": 13926
+      },
+      {
+        "term": "has",
+        "count": 12433
+      },
+      {
+        "term": "help",
+        "count": 11441
+      },
+      {
+        "term": "these",
+        "count": 11406
+      },
+      {
+        "term": "he",
+        "count": 10799
+      },
+      {
+        "term": "his",
+        "count": 10285
+      },
+      {
+        "term": "other",
+        "count": 10029
+      },
+      {
+        "term": "them",
+        "count": 9899
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 19226,
+        "response_index": 0,
+        "prompt_id": "ce17d921b79ede6bf3978c8fd31557b3183cff04a07f7f58ace3259debd697a8",
+        "assistant_output": "I don't have access to additional information beyond what is provided in the citation. However, it may be possible to find more information through further research using scientific databases or consulting with experts in the field."
+      },
+      {
+        "source_split": "train",
+        "source_row": 8941,
+        "response_index": 2,
+        "prompt_id": "1a432a7eb731ca7ac0428a8e1d6b26f037beca0431de4b8774896b74edeae0c4",
+        "assistant_output": "Certainly, one of Bob McDonald's most famous and engaging demonstrations involved an \"invisible fire extinguisher.\" McDonald used the carbon dioxide in pop fizz to put out a flame by placing a candle in a bowl and pouring ginger ale over it. The carbon dioxide in the drink extinguished the candle flame, demonstrating how CO2 can put out fires.\n\nAnother demonstration involved McDonald using a can of shaving cream to explain the concept of density. He showed the children how the foam of the shaving cream is less dense than the air around it and how it expands when released from the can.\n\nHe has also used balloons to talk about static electricity and had children rub balloons on their hair to create a static charge and stick the balloons to walls.\n\nOverall, McDonald believes that by using everyday items like candles, ginger ale, and balloons, he can help children understand complex scientific concepts and get them interested in science. Through his engaging demonstrations, McDonald has become a beloved figure in the world of science education in Canada."
+      },
+      {
+        "source_split": "validation",
+        "source_row": 3602,
+        "response_index": 2,
+        "prompt_id": "53b5093f7ee79163515bed2d94f67708fef6633513f8e53d2c2df52774b463f0",
+        "assistant_output": "Sure! The Science and Entertainment Exchange is a program that was created by the National Academy of Sciences in 2008. Its purpose is to connect entertainment industry professionals like writers, directors, and producers with scientists and engineers to improve the accuracy of science and technology in movies, TV shows, and other forms of media.\n\nThe program operates as a free service, and anyone in the entertainment industry can request to be connected with a scientist or engineer who can help them with their project. These collaborations can range from simple fact-checking to more in-depth consultations and collaborations on the creative aspects of a project.\n\nThe Science and Entertainment Exchange has been successful in bringing scientific accuracy to a wide range of films and TV shows, including \"The Big Bang Theory,\" \"The Martian,\" \"Black Panther,\" and \"Breaking Bad.\" Many scientists and engineers also appreciate the opportunity to help Hollywood bring more accuracy to their portrayals of science and technology, and to inspire more people to take an interest in STEM fields as a result."
+      },
+      {
+        "source_split": "train",
+        "source_row": 8941,
+        "response_index": 1,
+        "prompt_id": "1a432a7eb731ca7ac0428a8e1d6b26f037beca0431de4b8774896b74edeae0c4",
+        "assistant_output": "Sure, Bob McDonald is a well-known science journalist in Canada who is best known for hosting CBC Radio's science program Quirks & Quarks. He has worked in the field of science communication for several decades and is a proponent of making science accessible to the general public through storytelling and engaging demonstrations.\n\nMcDonald has a background in English, philosophy, and theater, which he uses to bring science news to life. He employs standard tenets of good storytelling when writing about science news and focuses on creating compelling settings, characters, plotlines, and tension to keep his audience engaged.\n\nMcDonald is also known for his hands-on approach to science education. He has conducted engaging science demonstrations for kids that use everyday items like ginger ale, candles, and bowls to teach the basic principles of science. McDonald believes that by introducing children to complicated subjects in a straightforward way, they will stay interested and engaged.\n\nAdditionally, McDonald has published several books, including \"Measuring the Earth with a Stick: Science as I've Seen It,\" a collection of essays that recount his experiences as a science journalist. H..."
+      },
+      {
+        "source_split": "train",
+        "source_row": 23267,
+        "response_index": 1,
+        "prompt_id": "312076e7ededa6909e57df50d1e77da0e65a77bb1dff652d659df2b7aa833236",
+        "assistant_output": "The Future of Cinema Forum \u2013 Independent Film: Navigating the Digital Space is a part of the Singapore International Film Festival (SGIFF) and is open to the public. The forum will be held on 26th November 2016, 1pm at *SCAPE, and will discuss how independent filmmakers can navigate the digital space, while exploring the impact of new media on the film industry. The forum will feature a panel of renowned film industry professionals discussing topics such as film finance, crowd funding, virtual reality, and distribution. The forum is a great opportunity for aspiring filmmakers, industry professionals and film enthusiasts to gain insights into the future of cinema and address the challenges and opportunities that lie ahead in the digital age. More information on the forum and the SGIFF can be found on their website at sgiff.com."
+      }
+    ]
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "embedding_batch_size": 128,
+  "normalize_embeddings": true,
+  "max_embed_rows": null,
+  "splits": {
+    "train": {
+      "responses": 115237,
+      "metadata_path": "/Users/gosha04/Documents/CPSC_Courses/Valuation-Repository/393/Final/data_splits/embeddings/train_metadata.parquet",
+      "embeddings_path": "/Users/gosha04/Documents/CPSC_Courses/Valuation-Repository/393/Final/data_splits/embeddings/train_embeddings.npy",
+      "embedding_shape": [
+        115237,
+        384
+      ]
+    },
+    "validation": {
+      "responses": 24780,
+      "metadata_path": "/Users/gosha04/Documents/CPSC_Courses/Valuation-Repository/393/Final/data_splits/embeddings/validation_metadata.parquet",
+      "embeddings_path": "/Users/gosha04/Documents/CPSC_Courses/Valuation-Repository/393/Final/data_splits/embeddings/validation_embeddings.npy",
+      "embedding_shape": [
+        24780,
+        384
+      ]
+    },
+    "test": {
+      "responses": 24675,
+      "metadata_path": "/Users/gosha04/Documents/CPSC_Courses/Valuation-Repository/393/Final/data_splits/embeddings/test_metadata.parquet",
+      "embeddings_path": "/Users/gosha04/Documents/CPSC_Courses/Valuation-Repository/393/Final/data_splits/embeddings/test_embeddings.npy",
+      "embedding_shape": [
+        24675,
+        384
+      ]
+    }
+  }
+}
