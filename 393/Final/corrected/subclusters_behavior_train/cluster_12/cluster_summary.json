@@ -1,0 +1,520 @@
+[
+  {
+    "cluster": 0,
+    "is_noise": false,
+    "members": 692,
+    "fraction": 0.0931986531986532,
+    "avg_chars": 200.01589595375722,
+    "median_chars": 195.5,
+    "avg_words": 33.51589595375722,
+    "median_words": 33.0,
+    "list_format_fraction": 0.06647398843930635,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 0.1777456647398844,
+    "information_agreement_opening_fraction": 1.0,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.0,
+    "top_terms": [
+      {
+        "term": "according",
+        "count": 474
+      },
+      {
+        "term": "yes",
+        "count": 184
+      },
+      {
+        "term": "text",
+        "count": 162
+      },
+      {
+        "term": "passage",
+        "count": 121
+      },
+      {
+        "term": "here",
+        "count": 113
+      },
+      {
+        "term": "based",
+        "count": 109
+      },
+      {
+        "term": "information",
+        "count": 106
+      },
+      {
+        "term": "material",
+        "count": 95
+      },
+      {
+        "term": "sure",
+        "count": 86
+      },
+      {
+        "term": "given",
+        "count": 82
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 16613,
+        "response_index": 0,
+        "prompt_id": "db427703192f441e78bc306d527c00050d29922e17d4bc99ceb81be90ce90cc9",
+        "assistant_output": "According to an FCR official, 209 renters living in the area were offered the relocation agreement or a cash payment averaging $85,000 during the contentious takeover of the 22-acre site."
+      },
+      {
+        "source_split": "train",
+        "source_row": 32836,
+        "response_index": 3,
+        "prompt_id": "be3a9e27e63ca84ed64cbc72016f935f1124ded84345c0e6801c45a56398cc85",
+        "assistant_output": "Yes, according to the Moody's report, NR Finance de M\u00e9xico proposed to expand its Long and Short Term Certificados Burs\u00e1tiles Dual Revolving Program to Mx$13 billion, from Mx$10 billion."
+      },
+      {
+        "source_split": "train",
+        "source_row": 22356,
+        "response_index": 2,
+        "prompt_id": "8b36e13bcd1210cf5a1eeb811199d7fb05c2c77d52525ff64e85216ba26a2b51",
+        "assistant_output": "According to Prosecutor Andrew Dallas, analysis of Easton's blood alcohol level after the accident showed he had approximately 105mg of alcohol per 120mg of blood. The legal limit was 80mg."
+      },
+      {
+        "source_split": "train",
+        "source_row": 21618,
+        "response_index": 1,
+        "prompt_id": "dce4f7dd42ee51441c24e0d6ff83da6eb54b50019577bf5b054fbf1afa325d2b",
+        "assistant_output": "According to the text, deputies are currently looking for the man who robbed a bank in Sun City Center on Monday afternoon. No further information or details about the robbery are provided."
+      },
+      {
+        "source_split": "train",
+        "source_row": 12151,
+        "response_index": 2,
+        "prompt_id": "17fb242cb2759d7b55be5cd9ae81751b7e131dcec194ba849b7f4edcf33123e1",
+        "assistant_output": "According to the Mobile Economy report by the GSM Association, mobile technologies currently contribute to 4.5 percent of GDP worldwide. This level is expected to rise to 5 percent by 2022."
+      }
+    ]
+  },
+  {
+    "cluster": 1,
+    "is_noise": false,
+    "members": 4102,
+    "fraction": 0.5524579124579124,
+    "avg_chars": 222.03973671379813,
+    "median_chars": 222.0,
+    "avg_words": 37.80936128717698,
+    "median_words": 38.0,
+    "list_format_fraction": 0.04802535348610434,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 0.1621160409556314,
+    "information_agreement_opening_fraction": 0.0,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.0,
+    "top_terms": [
+      {
+        "term": "yes",
+        "count": 561
+      },
+      {
+        "term": "sure",
+        "count": 470
+      },
+      {
+        "term": "any",
+        "count": 418
+      },
+      {
+        "term": "has",
+        "count": 367
+      },
+      {
+        "term": "information",
+        "count": 367
+      },
+      {
+        "term": "great",
+        "count": 342
+      },
+      {
+        "term": "other",
+        "count": 322
+      },
+      {
+        "term": "no",
+        "count": 311
+      },
+      {
+        "term": "enjoy",
+        "count": 301
+      },
+      {
+        "term": "time",
+        "count": 284
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 212,
+        "response_index": 0,
+        "prompt_id": "b1df6e2122862cdbdb25fe77feb7ea935a4556ae2a0eb13e430e1d185f7d778c",
+        "assistant_output": "Thailand is famous for its street food culture. Some must-try dishes include Pad Thai, Som Tam (papaya salad), Tom Yum (spicy and sour soup), Khao Soi (curry noodle soup), Grilled Pork Skewers, and Mango Sticky Rice."
+      },
+      {
+        "source_split": "train",
+        "source_row": 35789,
+        "response_index": 1,
+        "prompt_id": "d95449c2d4add3615e98c02a5445255a22c32a68900c2b74d0b2645d2856642f",
+        "assistant_output": "There is no specific information provided in the text about how the speaker's friends and family have supported them in the past. The statement only suggests that the speaker believes they have a good support system."
+      },
+      {
+        "source_split": "train",
+        "source_row": 31594,
+        "response_index": 0,
+        "prompt_id": "6b94bfad939f476b1f7744fef0e282c0d1f2958f7eee0d4617e389315cd3a156",
+        "assistant_output": "The author thinks that British Airways' use of the slogan 'Service' is cheeky and confrontational, but not very smart as it is outdated and says nothing. It is also seen as an opportunity for competition to criticize."
+      },
+      {
+        "source_split": "train",
+        "source_row": 7444,
+        "response_index": 1,
+        "prompt_id": "dbfe7b9eee56bb3df1ece546980bcaa73a60e015650b194160e7b1cd16495766",
+        "assistant_output": "As per the previous passage, Zeroed Hero is an original rock band that Alison Margaret has recently joined. However, there isn't any specific information provided in the passage about the type of rock music they play."
+      },
+      {
+        "source_split": "train",
+        "source_row": 15244,
+        "response_index": 2,
+        "prompt_id": "880b8e5c996330146a4dedafa9cabe713b71667562f50a56a03e4da326d8f10e",
+        "assistant_output": "Unfortunately, it's not specified in the given material what the wedding that the Doyles were inviting the Hennessys to was for. Apologies for not being able to provide you with the information you were looking for."
+      }
+    ]
+  },
+  {
+    "cluster": 2,
+    "is_noise": false,
+    "members": 1,
+    "fraction": 0.00013468013468013467,
+    "avg_chars": 25.0,
+    "median_chars": 25.0,
+    "avg_words": 6.0,
+    "median_words": 6.0,
+    "list_format_fraction": 0.0,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 1.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 0.0,
+    "information_agreement_opening_fraction": 0.0,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.0,
+    "top_terms": [
+      {
+        "term": "hometown",
+        "count": 1
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 5159,
+        "response_index": 0,
+        "prompt_id": "d05c9bc79f04f35122a81e7a779a349201f3f13765750c9a0c1abd12a7582871",
+        "assistant_output": "I do not have a hometown."
+      }
+    ]
+  },
+  {
+    "cluster": 3,
+    "is_noise": false,
+    "members": 113,
+    "fraction": 0.015218855218855219,
+    "avg_chars": 122.54867256637168,
+    "median_chars": 125.0,
+    "avg_words": 22.787610619469028,
+    "median_words": 24.0,
+    "list_format_fraction": 0.0,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 1.0,
+    "assist_agreement_opening_fraction": 0.336283185840708,
+    "information_agreement_opening_fraction": 0.017699115044247787,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.22123893805309736,
+    "top_terms": [
+      {
+        "term": "please",
+        "count": 54
+      },
+      {
+        "term": "me",
+        "count": 36
+      },
+      {
+        "term": "any",
+        "count": 27
+      },
+      {
+        "term": "glad",
+        "count": 27
+      },
+      {
+        "term": "provide",
+        "count": 26
+      },
+      {
+        "term": "help",
+        "count": 26
+      },
+      {
+        "term": "happy",
+        "count": 25
+      },
+      {
+        "term": "thank",
+        "count": 22
+      },
+      {
+        "term": "questions",
+        "count": 19
+      },
+      {
+        "term": "great",
+        "count": 15
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 24584,
+        "response_index": 0,
+        "prompt_id": "7fcafd73439747abf5c1d757ec7d5374b0ed0c2c2bd5bf19e10233c3103e5191",
+        "assistant_output": "Thank you, I'm glad you are enjoying the series. The historical research was a big part of making it come alive."
+      },
+      {
+        "source_split": "train",
+        "source_row": 2785,
+        "response_index": 0,
+        "prompt_id": "034f3f794e04b946394ffdda6b9c18366bac82ee776e02085198650aad3e4e9b",
+        "assistant_output": "Suzanne tells Carly that her writing was helpful to her, to which Carly thanks her and asks how she is doing."
+      },
+      {
+        "source_split": "train",
+        "source_row": 15184,
+        "response_index": 2,
+        "prompt_id": "2baea6f8dd4f0bc98dd37ca7e64d77e80bd4673b35c1cc38e2361c76d056d830",
+        "assistant_output": "\"Life is great, but it's even cheddar with our artisanal cheese - You'll melt with happiness, guaranteed to please!\""
+      },
+      {
+        "source_split": "train",
+        "source_row": 3630,
+        "response_index": 3,
+        "prompt_id": "b257c95cbf446a8fb6ddaaa391f6d4392f3629baf82569469f8ae0c49bb86b84",
+        "assistant_output": "I'm glad to have been of help. Good luck with the decluttering process and have fun with your kids while doing it!"
+      },
+      {
+        "source_split": "train",
+        "source_row": 33057,
+        "response_index": 0,
+        "prompt_id": "1dfd322ab46a256b831be7dcdb50796a743bd5c9f54ead1ef24e3c6845ec8232",
+        "assistant_output": "\"Thank you for the offer, but I should probably avoid coffee right now. Maybe I'll come back another time for a cup.\""
+      }
+    ]
+  },
+  {
+    "cluster": 4,
+    "is_noise": false,
+    "members": 2223,
+    "fraction": 0.2993939393939394,
+    "avg_chars": 94.69860548807917,
+    "median_chars": 98.0,
+    "avg_words": 16.39271255060729,
+    "median_words": 17.0,
+    "list_format_fraction": 0.009446693657219974,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 0.08547008547008547,
+    "information_agreement_opening_fraction": 0.0,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 0.0,
+    "top_terms": [
+      {
+        "term": "yes",
+        "count": 292
+      },
+      {
+        "term": "no",
+        "count": 136
+      },
+      {
+        "term": "sure",
+        "count": 134
+      },
+      {
+        "term": "text",
+        "count": 127
+      },
+      {
+        "term": "any",
+        "count": 123
+      },
+      {
+        "term": "enjoy",
+        "count": 107
+      },
+      {
+        "term": "information",
+        "count": 96
+      },
+      {
+        "term": "has",
+        "count": 94
+      },
+      {
+        "term": "minutes",
+        "count": 83
+      },
+      {
+        "term": "passage",
+        "count": 75
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 27335,
+        "response_index": 2,
+        "prompt_id": "b6970763c6f2e5a2519153bb2371522a30ad712b467917d4b21ea3039300b0ba",
+        "assistant_output": "Strawberry muffins sound delicious. I hope you enjoy making them and they turn out great!"
+      },
+      {
+        "source_split": "train",
+        "source_row": 35760,
+        "response_index": 0,
+        "prompt_id": "ab95d1699ad35481b45597da019917e4d76009c9d7149fbc9b5fc162c331d938",
+        "assistant_output": "Yes, Kane Patterson was a one-time commitment to Ohio State before committing to Clemson."
+      },
+      {
+        "source_split": "train",
+        "source_row": 28693,
+        "response_index": 2,
+        "prompt_id": "deb05782f1b58529f3095e95c4fa1fe513443b9a31ca7fe3444bc08a6965344d",
+        "assistant_output": "Yes, the Western powers mentioned in the text are the United States, Britain, and France."
+      },
+      {
+        "source_split": "train",
+        "source_row": 18896,
+        "response_index": 0,
+        "prompt_id": "27fa725dce8bd6f2cfd6afd853b7a390dc0b22a61394af897775b775a7a4842b",
+        "assistant_output": "\"I wish my life was organized and structured with clear boundaries from start to finish.\""
+      },
+      {
+        "source_split": "train",
+        "source_row": 27359,
+        "response_index": 0,
+        "prompt_id": "89dbd163be6f20363a9b111e83dac861819d8198d8e8bc1279c7d3b2af35ebd8",
+        "assistant_output": "Yes, you can substitute butter with margarine while making the dough roll for the wafers."
+      }
+    ]
+  },
+  {
+    "cluster": 5,
+    "is_noise": false,
+    "members": 294,
+    "fraction": 0.039595959595959594,
+    "avg_chars": 153.95578231292518,
+    "median_chars": 154.0,
+    "avg_words": 28.122448979591837,
+    "median_words": 29.0,
+    "list_format_fraction": 0.01020408163265306,
+    "code_block_fraction": 0.0,
+    "refusal_marker_fraction": 0.0,
+    "politeness_marker_fraction": 0.0,
+    "assist_agreement_opening_fraction": 0.09863945578231292,
+    "information_agreement_opening_fraction": 0.061224489795918366,
+    "user_validation_opening_fraction": 0.0,
+    "clarification_or_uncertainty_fraction": 1.0,
+    "top_terms": [
+      {
+        "term": "could",
+        "count": 201
+      },
+      {
+        "term": "glad",
+        "count": 138
+      },
+      {
+        "term": "help",
+        "count": 135
+      },
+      {
+        "term": "any",
+        "count": 79
+      },
+      {
+        "term": "questions",
+        "count": 60
+      },
+      {
+        "term": "great",
+        "count": 45
+      },
+      {
+        "term": "luck",
+        "count": 42
+      },
+      {
+        "term": "enjoy",
+        "count": 40
+      },
+      {
+        "term": "don",
+        "count": 38
+      },
+      {
+        "term": "ask",
+        "count": 38
+      }
+    ],
+    "samples": [
+      {
+        "source_split": "train",
+        "source_row": 19294,
+        "response_index": 3,
+        "prompt_id": "ee32e7b3f0f8d753be8879271a49c49fbf2ba2ff4fc96445c99b174e40f2dd5a",
+        "assistant_output": "I'm glad I could help. Enjoy your visit to The Toothsome Chocolate Emporium & Savory Feast Kitchen and let us know if you need any more assistance."
+      },
+      {
+        "source_split": "train",
+        "source_row": 25875,
+        "response_index": 2,
+        "prompt_id": "4f8341c13176075f45fce645aea57d68acbf5f9f64e276a3bdea0cd3376f5e40",
+        "assistant_output": "I am glad that I could assist you. If you have any further questions or concerns, feel free to ask. Good luck with scheduling your appointment online!"
+      },
+      {
+        "source_split": "train",
+        "source_row": 21097,
+        "response_index": 5,
+        "prompt_id": "147c83ded9adb440e15697e83e9c7ddc021fa48c42bff69a64ad820bba347f6a",
+        "assistant_output": "I'm glad I could help. I hope you enjoy learning the Kikuyu language and find the resources helpful. Good luck with your language-learning journey!"
+      },
+      {
+        "source_split": "train",
+        "source_row": 1696,
+        "response_index": 1,
+        "prompt_id": "7f25eb7f10e014d6dd53289a39519252c14c203c80420286840b69ddf758dd8b",
+        "assistant_output": "There is no limit to the number of terms a Senator can serve. Therefore, a Senator could potentially serve an unlimited number of six-year terms."
+      },
+      {
+        "source_split": "train",
+        "source_row": 32803,
+        "response_index": 6,
+        "prompt_id": "3222e57fb9fea17a2cb1f4f806d9e018262ce0c058176750c16440c08550dc12",
+        "assistant_output": "I'm glad I could help. Remember, packing can seem daunting and stressful, but with a little planning and organization, it can be a breeze. Happy travels!"
+      }
+    ]
+  }
+]

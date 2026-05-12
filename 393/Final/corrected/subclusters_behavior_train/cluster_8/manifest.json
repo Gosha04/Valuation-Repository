@@ -1,0 +1,56 @@
+{
+  "splits": [
+    "train"
+  ],
+  "sample_size": null,
+  "seed": 393,
+  "filter_cluster_from": "corrected/cluster_results_train_behavior_16/clustered_responses.parquet",
+  "filter_cluster": 8,
+  "labels_path": "corrected/subclusters_behavior_train/cluster_8/clustered_responses.parquet",
+  "reduced_embeddings_path": "corrected/subclusters_behavior_train/cluster_8/reduced_embeddings.npy",
+  "summary_json_path": "corrected/subclusters_behavior_train/cluster_8/cluster_summary.json",
+  "summary_markdown_path": "corrected/subclusters_behavior_train/cluster_8/cluster_summary.md",
+  "reduction": {
+    "input_shape": [
+      3273,
+      384
+    ],
+    "pca": {
+      "requested_dims": 50,
+      "dims": 50,
+      "explained_variance_ratio_sum": 0.6341626644134521
+    },
+    "umap": null,
+    "output_shape": [
+      3273,
+      50
+    ]
+  },
+  "features": {
+    "feature_mode": "behavior",
+    "behavior_features": [
+      "log_words",
+      "log_chars",
+      "list_format",
+      "code_block",
+      "refusal_marker",
+      "politeness_marker",
+      "assist_agreement_opening",
+      "information_agreement_opening",
+      "user_validation_opening",
+      "clarification_or_uncertainty"
+    ],
+    "shape": [
+      3273,
+      10
+    ]
+  },
+  "clustering": {
+    "algorithm": "kmeans",
+    "kmeans_clusters": 6,
+    "cluster_count": 6,
+    "noise_count": 0,
+    "noise_fraction": 0.0,
+    "inertia": 12932.712890625
+  }
+}
