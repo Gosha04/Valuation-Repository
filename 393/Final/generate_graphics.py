@@ -38,6 +38,7 @@ DEFAULT_THRESHOLD_SWEEP = (
 DEFAULT_METRICS = DEFAULT_EXPERIMENT_DIR / "final_test_behavior_metrics.json"
 DEFAULT_OUTPUT_DIR = DEFAULT_EXPERIMENT_DIR / "figures"
 DEFAULT_TAGS_PATH = DEFAULT_EXPERIMENT_DIR / "behavior_valuation_tags.md"
+DEFAULT_HDBSCAN_DIR = PROJECT_DIR / "Final/cluster_results"
 
 
 def parse_args() -> argparse.Namespace:
@@ -106,6 +107,15 @@ def parse_args() -> argparse.Namespace:
         type=float,
         default=-0.5,
         help="Classification score threshold to draw alongside the SVM zero boundary.",
+    )
+    parser.add_argument(
+        "--hdbscan-dir",
+        type=Path,
+        default=DEFAULT_HDBSCAN_DIR,
+        help=(
+            "Directory containing HDBSCAN clustered_responses.parquet and "
+            "reduced_embeddings.npy."
+        ),
     )
     parser.add_argument(
         "--train-limit-per-subcluster",
@@ -228,6 +238,140 @@ def plot_subcluster_sizes(experiment_dir: Path, output_dir: Path) -> list[Path]:
     cbar = fig.colorbar(image, ax=ax)
     cbar.set_label("Responses")
     path = output_dir / "subcluster_size_heatmap.png"
+    save_figure(fig, path)
+    plt.close(fig)
+    paths.append(path)
+    return paths
+
+
+def hdbscan_projection(reduced_embeddings: np.ndarray, seed: int) -> np.ndarray:
+    if reduced_embeddings.ndim != 2:
+        raise SystemExit("HDBSCAN reduced embeddings must be a 2D array.")
+    if reduced_embeddings.shape[1] == 2:
+        return reduced_embeddings
+    try:
+        from sklearn.decomposition import PCA
+    except ImportError as exc:
+        raise SystemExit(
+            "Missing package: scikit-learn. Install with `python -m pip install scikit-learn`."
+        ) from exc
+    return PCA(n_components=2, random_state=seed).fit_transform(reduced_embeddings)
+
+
+def plot_hdbscan_heatmaps(hdbscan_dir: Path, output_dir: Path, seed: int) -> list[Path]:
+    labels_path = hdbscan_dir / "clustered_responses.parquet"
+    embeddings_path = hdbscan_dir / "reduced_embeddings.npy"
+    if not labels_path.exists() or not embeddings_path.exists():
+        return []
+
+    plt = import_plotting()
+    labels_frame = pd.read_parquet(labels_path)
+    if "cluster" not in labels_frame.columns:
+        raise SystemExit(f"Missing cluster column in {labels_path}")
+    reduced_embeddings = np.load(embeddings_path)
+    if len(labels_frame) != len(reduced_embeddings):
+        raise SystemExit(
+            "HDBSCAN labels and reduced embeddings have different row counts: "
+            f"{len(labels_frame)} vs {len(reduced_embeddings)}"
+        )
+
+    projected = hdbscan_projection(reduced_embeddings, seed)
+    clusters = labels_frame["cluster"].to_numpy()
+    unique_clusters = sorted(np.unique(clusters))
+    color_values = {cluster: index for index, cluster in enumerate(unique_clusters)}
+    cluster_indices = np.asarray([color_values[cluster] for cluster in clusters])
+    cmap = plt.get_cmap("tab20", max(len(unique_clusters), 1))
+    paths: list[Path] = []
+
+    fig, ax = plt.subplots(figsize=(9.5, 7))
+    heat = ax.hexbin(
+        projected[:, 0],
+        projected[:, 1],
+        gridsize=70,
+        cmap="inferno",
+        bins="log",
+        mincnt=1,
+    )
+    cbar = fig.colorbar(heat, ax=ax)
+    cbar.set_label("Responses per hex bin, log scale")
+    ax.set_title("HDBSCAN Density Heat Map Projected with PCA")
+    ax.set_xlabel("PCA projection of HDBSCAN reduced embeddings: component 1")
+    ax.set_ylabel("PCA projection of HDBSCAN reduced embeddings: component 2")
+    ax.grid(alpha=0.12)
+    path = output_dir / "hdbscan_density_heatmap.png"
+    save_figure(fig, path)
+    plt.close(fig)
+    paths.append(path)
+
+    x_edges = np.linspace(np.percentile(projected[:, 0], 1), np.percentile(projected[:, 0], 99), 95)
+    y_edges = np.linspace(np.percentile(projected[:, 1], 1), np.percentile(projected[:, 1], 99), 95)
+    x_bin = np.digitize(projected[:, 0], x_edges) - 1
+    y_bin = np.digitize(projected[:, 1], y_edges) - 1
+    valid = (
+        (x_bin >= 0)
+        & (x_bin < len(x_edges) - 1)
+        & (y_bin >= 0)
+        & (y_bin < len(y_edges) - 1)
+    )
+    dominant = np.full((len(y_edges) - 1, len(x_edges) - 1), np.nan)
+    density = np.zeros_like(dominant, dtype=float)
+    for y_index in range(len(y_edges) - 1):
+        for x_index in range(len(x_edges) - 1):
+            mask = valid & (x_bin == x_index) & (y_bin == y_index)
+            if not mask.any():
+                continue
+            counts = np.bincount(cluster_indices[mask], minlength=len(unique_clusters))
+            dominant[y_index, x_index] = int(np.argmax(counts))
+            density[y_index, x_index] = int(counts.sum())
+
+    alpha = np.zeros_like(density)
+    if density.max() > 0:
+        alpha = np.clip(np.log1p(density) / np.log1p(density.max()), 0.18, 0.82)
+        alpha[density == 0] = 0.0
+
+    fig, ax = plt.subplots(figsize=(10.5, 7.5))
+    image = ax.imshow(
+        dominant,
+        extent=[x_edges[0], x_edges[-1], y_edges[0], y_edges[-1]],
+        origin="lower",
+        aspect="auto",
+        cmap=cmap,
+        alpha=alpha,
+        interpolation="nearest",
+    )
+    rng = np.random.default_rng(seed)
+    sample_size = min(5000, len(projected))
+    sample_indices = rng.choice(len(projected), size=sample_size, replace=False)
+    ax.scatter(
+        projected[sample_indices, 0],
+        projected[sample_indices, 1],
+        s=5,
+        c=[cmap(index) for index in cluster_indices[sample_indices]],
+        alpha=0.28,
+        linewidths=0,
+    )
+    for cluster in unique_clusters:
+        mask = clusters == cluster
+        centroid = projected[mask].mean(axis=0)
+        label = "noise" if int(cluster) == -1 else f"cluster {int(cluster)}"
+        ax.text(
+            centroid[0],
+            centroid[1],
+            label,
+            ha="center",
+            va="center",
+            fontsize=9,
+            weight="bold",
+            bbox={"boxstyle": "round,pad=0.25", "fc": "white", "ec": "#202020", "alpha": 0.78},
+        )
+    cbar = fig.colorbar(image, ax=ax, ticks=range(len(unique_clusters)))
+    cbar.ax.set_yticklabels(["noise" if int(cluster) == -1 else str(int(cluster)) for cluster in unique_clusters])
+    cbar.set_label("Dominant HDBSCAN cluster")
+    ax.set_title("HDBSCAN Dominant-Cluster Heat Map Projected with PCA")
+    ax.set_xlabel("PCA projection of HDBSCAN reduced embeddings: component 1")
+    ax.set_ylabel("PCA projection of HDBSCAN reduced embeddings: component 2")
+    ax.grid(alpha=0.12)
+    path = output_dir / "hdbscan_cluster_heatmap.png"
     save_figure(fig, path)
     plt.close(fig)
     paths.append(path)
@@ -504,6 +648,7 @@ def main() -> None:
     written: list[Path] = []
     written.append(plot_cluster_sizes(args.top_cluster_summary, args.output_dir))
     written.extend(plot_subcluster_sizes(args.experiment_dir, args.output_dir))
+    written.extend(plot_hdbscan_heatmaps(args.hdbscan_dir, args.output_dir, args.seed))
 
     threshold_path = plot_threshold_sweep(args.threshold_sweep, args.output_dir)
     if threshold_path is not None:
