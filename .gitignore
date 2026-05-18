@@ -1,3 +1,5 @@
-*.parquet
-*.npy
-*.json
+*
+!*/
+!*.py
+!README.md
+!.gitignore

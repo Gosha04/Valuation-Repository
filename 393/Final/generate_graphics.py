@@ -448,6 +448,163 @@ def plot_tag_metrics(metrics_path: Path, output_dir: Path) -> Path | None:
     return path
 
 
+def plot_primary_confusion_matrix(metrics_path: Path, output_dir: Path) -> Path | None:
+    if not metrics_path.exists():
+        return None
+    plt = import_plotting()
+    data = load_json(metrics_path)
+    confusion = data.get("primary_confusion_matrix", {})
+    labels = confusion.get("labels", [])
+    matrix = confusion.get("matrix", {})
+    if not labels or not matrix:
+        return None
+
+    values = np.asarray(
+        [
+            [int(matrix.get(true_tag, {}).get(predicted_tag, 0)) for predicted_tag in labels]
+            for true_tag in labels
+        ],
+        dtype=int,
+    )
+    row_totals = values.sum(axis=1, keepdims=True)
+    normalized = np.divide(
+        values,
+        row_totals,
+        out=np.zeros_like(values, dtype=float),
+        where=row_totals != 0,
+    )
+
+    fig, ax = plt.subplots(figsize=(12, 10))
+    image = ax.imshow(normalized, cmap="YlGnBu", vmin=0, vmax=1)
+    ax.set_title("Primary Tag Confusion Matrix")
+    ax.set_xlabel("Predicted primary tag")
+    ax.set_ylabel("Reviewed primary tag")
+    ax.set_xticks(np.arange(len(labels)), labels, rotation=55, ha="right")
+    ax.set_yticks(np.arange(len(labels)), labels)
+
+    max_count = int(values.max()) if values.size else 0
+    for row_index in range(values.shape[0]):
+        for column_index in range(values.shape[1]):
+            count = int(values[row_index, column_index])
+            if count == 0:
+                continue
+            color = "white" if normalized[row_index, column_index] > 0.55 else "#202020"
+            label = str(count) if max_count < 100 else f"{count:,}"
+            ax.text(
+                column_index,
+                row_index,
+                label,
+                ha="center",
+                va="center",
+                fontsize=7,
+                color=color,
+            )
+
+    ax.set_xticks(np.arange(len(labels) + 1) - 0.5, minor=True)
+    ax.set_yticks(np.arange(len(labels) + 1) - 0.5, minor=True)
+    ax.grid(which="minor", color="white", linestyle="-", linewidth=0.8)
+    ax.tick_params(which="minor", bottom=False, left=False)
+
+    cbar = fig.colorbar(image, ax=ax)
+    cbar.set_label("Share of reviewed primary tag")
+    accuracy = confusion.get("accuracy")
+    total = confusion.get("total")
+    if accuracy is not None and total is not None:
+        ax.text(
+            0.0,
+            -0.12,
+            f"Primary-tag accuracy: {float(accuracy):.1%} across {int(total)} reviewed examples",
+            transform=ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=9,
+        )
+
+    path = output_dir / "primary_tag_confusion_matrix.png"
+    save_figure(fig, path)
+    plt.close(fig)
+    return path
+
+
+def plot_active_primary_confusion_matrix(metrics_path: Path, output_dir: Path) -> Path | None:
+    if not metrics_path.exists():
+        return None
+    plt = import_plotting()
+    try:
+        from matplotlib.colors import LogNorm
+    except ImportError as exc:
+        raise SystemExit(
+            "Missing package: matplotlib. Install with `python -m pip install matplotlib`."
+        ) from exc
+
+    data = load_json(metrics_path)
+    confusion = data.get("primary_confusion_matrix", {})
+    labels = confusion.get("labels", [])
+    matrix = confusion.get("matrix", {})
+    if not labels or not matrix:
+        return None
+
+    values = np.asarray(
+        [
+            [int(matrix.get(true_tag, {}).get(predicted_tag, 0)) for predicted_tag in labels]
+            for true_tag in labels
+        ],
+        dtype=int,
+    )
+    row_totals = values.sum(axis=1)
+    column_totals = values.sum(axis=0)
+    active_rows = [index for index, total in enumerate(row_totals) if total > 0]
+    active_columns = [index for index, total in enumerate(column_totals) if total > 0]
+    if not active_rows or not active_columns:
+        return None
+
+    active_values = values[np.ix_(active_rows, active_columns)]
+    true_labels = [labels[index] for index in active_rows]
+    predicted_labels = [labels[index] for index in active_columns]
+    masked_values = np.ma.masked_where(active_values == 0, active_values)
+
+    fig, ax = plt.subplots(figsize=(11.5, 7.5))
+    cmap = plt.get_cmap("YlGnBu").copy()
+    cmap.set_bad("#f7f7f7")
+    image = ax.imshow(
+        masked_values,
+        cmap=cmap,
+        norm=LogNorm(vmin=1, vmax=max(1, int(active_values.max()))),
+    )
+    ax.set_title("Primary Tag Confusion Matrix, Active Tags Only")
+    ax.set_xlabel("Predicted primary tag")
+    ax.set_ylabel("Reviewed primary tag")
+    ax.set_xticks(np.arange(len(predicted_labels)), predicted_labels, rotation=55, ha="right")
+    ax.set_yticks(np.arange(len(true_labels)), true_labels)
+
+    for row_index in range(active_values.shape[0]):
+        for column_index in range(active_values.shape[1]):
+            count = int(active_values[row_index, column_index])
+            if count == 0:
+                continue
+            color = "white" if count >= max(8, active_values.max() * 0.35) else "#202020"
+            ax.text(
+                column_index,
+                row_index,
+                str(count),
+                ha="center",
+                va="center",
+                fontsize=8,
+                color=color,
+            )
+
+    ax.set_xticks(np.arange(len(predicted_labels) + 1) - 0.5, minor=True)
+    ax.set_yticks(np.arange(len(true_labels) + 1) - 0.5, minor=True)
+    ax.grid(which="minor", color="white", linestyle="-", linewidth=0.9)
+    ax.tick_params(which="minor", bottom=False, left=False)
+    cbar = fig.colorbar(image, ax=ax)
+    cbar.set_label("Reviewed examples, log scale")
+    path = output_dir / "primary_tag_confusion_matrix_active.png"
+    save_figure(fig, path)
+    plt.close(fig)
+    return path
+
+
 def selected_boundary_tags(metrics_path: Path, requested: list[str] | None, max_tags: int) -> list[str]:
     if requested:
         return requested[:max_tags]
@@ -507,8 +664,8 @@ def plot_decision_boundaries(args: argparse.Namespace, output_dir: Path) -> list
     tag_index = {tag: index for index, tag in enumerate(tag_names)}
     positive_sets = [set(row) for row in labels]
 
-    x_min, x_max = np.percentile(projected[:, 0], [1, 99])
-    y_min, y_max = np.percentile(projected[:, 1], [1, 99])
+    x_min, x_max = np.percentile(projected[:, 0], [5, 95])
+    y_min, y_max = np.percentile(projected[:, 1], [5, 95])
     x_pad = max((x_max - x_min) * 0.12, 0.5)
     y_pad = max((y_max - y_min) * 0.12, 0.5)
     xx, yy = np.meshgrid(
@@ -657,6 +814,14 @@ def main() -> None:
     tag_metrics_path = plot_tag_metrics(args.metrics, args.output_dir)
     if tag_metrics_path is not None:
         written.append(tag_metrics_path)
+
+    confusion_matrix_path = plot_primary_confusion_matrix(args.metrics, args.output_dir)
+    if confusion_matrix_path is not None:
+        written.append(confusion_matrix_path)
+
+    active_confusion_matrix_path = plot_active_primary_confusion_matrix(args.metrics, args.output_dir)
+    if active_confusion_matrix_path is not None:
+        written.append(active_confusion_matrix_path)
 
     written.extend(plot_decision_boundaries(args, args.output_dir))
 
