@@ -1,13 +1,18 @@
-# Valuation Repository
+# Behavior Valuation Tag Discovery
 
-This repository contains our CPSC 393 final project for discovering and evaluating
-behavior-oriented valuation tags in assistant responses from UltraChat. The
-workflow splits the dataset, embeds assistant outputs, clusters them, assigns
-behavior tag matrices to clusters/subclusters, trains a lightweight classifier
-from those labels, and evaluates predictions against reviewed labels.
+## Project Title
+
+**Behavior Valuation Tag Discovery** is a project for discovering
+and evaluating behavior-oriented valuation tags in assistant responses from the
+UltraChat dataset.
+
+The workflow splits UltraChat200k data, extracts assistant responses, embeds those
+responses with SentenceTransformers, clusters them, assigns behavior tag matrices
+to clusters/subclusters, trains a lightweight classifier from those labels, and
+evaluates predictions against reviewed labels.
 
 Most code lives in `393/Final`. Generated data artifacts are also stored there.
-Large `.parquet` and `.npy` outputs are ignored by git, so a fresh clone may need
+None python files are ignored by git for size reasons, so a fresh run is needed
 to regenerate them before running downstream scripts.
 
 ## Repository Layout
@@ -19,23 +24,30 @@ to regenerate them before running downstream scripts.
   classification.py              # Train behavior-tag classifier and tag responses
   validate_classification.py     # Compare predictions against reviewed labels
   sweep_thresholds.py            # Tune classifier thresholds/max tag count
-  data_splits/                   # Dataset split manifests and generated splits
-  cluster_results*/              # Top-level clustering runs and summaries
-  subclusters_behavior/          # Subcluster summaries and behavior tag matrix
-  corrected/                     # Corrected train/validation/test experiment outputs
 ```
 
-## Setup
+## Setup Instructions
 
 Run commands from the repository root:
 
 ```bash
-cd <YOU_CHOSEN-DIR/Valuation-Repository/...>
+cd /path/to/Valuation-Repository
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install datasets python-dotenv pandas numpy pyarrow sentence-transformers scikit-learn umap-learn hdbscan
+python -m pip install datasets python-dotenv pandas numpy pyarrow sentence-transformers scikit-learn umap-learn hdbscan matplotlib
 ```
+
+Required dependencies and tools:
+
+- Python 3.10 or newer.
+- `datasets` for loading UltraChat from Hugging Face.
+- `python-dotenv` for reading `.env` files.
+- `pandas`, `numpy`, and `pyarrow` for tabular data and generated artifacts.
+- `sentence-transformers` for embedding assistant responses.
+- `scikit-learn`, `umap-learn`, and `hdbscan` for dimensionality reduction,
+  clustering, and classification.
+- `matplotlib` for optional result figures.
 
 `prepare_embeddings.py` reads `HF_TOKEN` from `.env` or `393/Final/.env`.
 UltraChat is public in many environments, but keeping the token set is safest:
@@ -44,7 +56,40 @@ UltraChat is public in many environments, but keeping the token set is safest:
 echo 'HF_TOKEN=your_huggingface_token_here' > .env
 ```
 
-## Recommended Pipeline
+## Dataset Information
+
+The project uses the Hugging Face dataset
+`HuggingFaceH4/ultrachat_200k`, with the default source split `train_sft`.
+The dataset is downloaded automatically by `393/Final/prepare_embeddings.py`
+through the Hugging Face `datasets` library.
+
+By default, the script:
+
+- Keeps 25% of UltraChat as the discovery set.
+- Splits that discovery set into 70% train, 15% validation, and 15% test.
+- Stores the remaining 75% as held-out `new_data`.
+- Extracts assistant messages into response-level metadata files.
+- Saves response embeddings generated with `BAAI/bge-small-en-v1.5`.
+
+Default generated dataset outputs:
+
+- `393/Final/data_splits/train.parquet`
+- `393/Final/data_splits/validation.parquet`
+- `393/Final/data_splits/test.parquet`
+- `393/Final/data_splits/new_data.parquet`
+- `393/Final/data_splits/manifest.json`
+- `393/Final/data_splits/embeddings/*_metadata.parquet`
+- `393/Final/data_splits/embeddings/*_embeddings.npy`
+- `393/Final/data_splits/embeddings/manifest.json`
+
+To download and prepare the dataset:
+
+```bash
+cd 393
+python Final/prepare_embeddings.py
+```
+
+## How to Run the Code
 
 The scripts use paths relative to `393`, because the default project directory
 inside the code is `393/Final`. The cleanest way to run the full pipeline is:
@@ -57,12 +102,6 @@ cd 393
 
 ```bash
 python Final/prepare_embeddings.py
-```
-
-For a quick smoke test:
-
-```bash
-python Final/prepare_embeddings.py --max-embed-rows 500
 ```
 
 2. Cluster training embeddings:
@@ -119,7 +158,43 @@ python Final/sweep_thresholds.py \
   --csv-output Final/subclusters_behavior/threshold_sweep_results.csv
 ```
 
-## Script Reference
+Optional: generate static result figures for the corrected experiment:
+
+```bash
+python Final/generate_graphics.py
+```
+
+## Results
+
+The project produces clustered assistant responses, behavior valuation tag
+summaries, classifier predictions, validation metrics, threshold sweep results,
+and optional PNG figures.
+
+Important generated outputs include:
+
+- Cluster summaries such as `393/Final/cluster_results/cluster_summary.md`.
+- Behavior tag matrices such as
+  `393/Final/subclusters_behavior/behavior_valuation_tags.md`.
+- Corrected experiment outputs in
+  `393/Final/corrected/subclusters_behavior_train`.
+- Validation/test disagreement CSVs for inspecting classifier mistakes.
+- Figures in
+  `393/Final/corrected/subclusters_behavior_train/figures`.
+
+Current corrected final test summary:
+
+- Reviewed examples: 300.
+- Behavior tags evaluated: 15.
+- Micro precision: 0.464.
+- Micro recall: 0.704.
+- Micro F1: 0.559.
+- Mean Jaccard score: 0.413.
+- Primary tag accuracy: 0.160.
+
+The validation threshold sweep selected `threshold=-0.5` and `max_tags=5` by
+micro F1. 
+
+## Script Reference (For Braeden)
 
 ### `prepare_embeddings.py`
 
@@ -136,16 +211,6 @@ Default outputs:
 - `Final/data_splits/embeddings/*_metadata.parquet`
 - `Final/data_splits/embeddings/*_embeddings.npy`
 - `Final/data_splits/embeddings/manifest.json`
-
-Common commands:
-
-```bash
-python Final/prepare_embeddings.py
-python Final/prepare_embeddings.py --skip-split
-python Final/prepare_embeddings.py --skip-embed
-python Final/prepare_embeddings.py --embed-splits train validation test new_data
-python Final/prepare_embeddings.py --max-embed-rows 1000
-```
 
 Useful options:
 
@@ -168,15 +233,6 @@ Default outputs:
 - `Final/cluster_results/cluster_summary.json`
 - `Final/cluster_results/cluster_summary.md`
 - `Final/cluster_results/manifest.json`
-
-Common commands:
-
-```bash
-python Final/valuation_cluster.py
-python Final/valuation_cluster.py --algorithm kmeans --kmeans-clusters 16 --output-dir Final/cluster_results_kmeans_16
-python Final/valuation_cluster.py --feature-mode behavior --algorithm kmeans --kmeans-clusters 12 --pca-dims 0 --umap-dims 0 --output-dir Final/cluster_results_behavior_12
-python Final/valuation_cluster.py --splits train validation --sample-size 5000
-```
 
 Subclustering a prior cluster:
 
@@ -327,5 +383,3 @@ python Final/validate_classification.py \
   `--output-dir 393/Final/data_splits`.
 - `.parquet` and `.npy` files are intentionally ignored by git because they are
   generated and can be large.
-- The current local worktree already has generated artifacts and some `.DS_Store`
-  changes; the README does not depend on them being committed.
